@@ -8,7 +8,7 @@ export function homeView(root) {
   root.append(
     h('main', { class: 'home' },
       header({ center: signature(ex.title), right: headerAction('gear', 'Ajustes', () => go('ajustes')) }),
-      marquee(['Museum App', 'Museum App']),
+      marquee([ex.marquee ?? ex.title]),
       h('section', { class: 'home__hero' },
         h('p', { class: 't-label' }, ex.subtitle),
         h('h1', { class: 't-display home__title' }, 'Aponte, toque, ouça'),

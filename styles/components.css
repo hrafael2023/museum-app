@@ -79,18 +79,17 @@
 .ds-signature__big b { font-weight: 800; }
 .ds-signature__big span { font-weight: 400; }
 
-/* Letreiro: texto que corre, alternando larguras -------------------------- */
+/* Letreiro: texto que corre, na tipografia da exposição (--font-mono) ------ */
 .ds-marquee {
   overflow: hidden; white-space: nowrap;
   border-bottom: var(--rule) solid var(--color-rule);
-  padding: 6px 0 4px;
+  padding: 8px 0 6px;
 }
 .ds-marquee__track { display: inline-flex; animation: ds-marquee 22s linear infinite; }
 .ds-marquee__item {
-  padding-right: .35em; font-size: 34px; line-height: 1; text-transform: uppercase;
-  font-family: var(--font-condensed); font-stretch: var(--stretch-compressed); font-weight: 800;
+  padding-right: .9em; font-size: 38px; line-height: 1.05; letter-spacing: -.01em;
+  font-family: var(--font-mono); font-weight: 400;
 }
-.ds-marquee__item:nth-child(even) { font-family: var(--font-geometric); font-stretch: var(--stretch-extended); font-weight: 800; }
 @keyframes ds-marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .ds-marquee__track { animation: none; } }
 

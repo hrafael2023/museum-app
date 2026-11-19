@@ -106,6 +106,9 @@ Arquivos:
 `assets/fonts/`), que tem eixo de largura de 62% a 125% e cobre os mesmos papéis.
 Se o Instituto ceder os arquivos da Chromatic, basta declarar os `@font-face`
 em `tokens.css`: ela está primeiro em cada pilha de fontes e passa a ser usada.
+O letreiro animado usa a [Fragment Mono](https://github.com/weiweihuanghuang/fragment-mono)
+(SIL OFL), próxima da tipografia do título da exposição; o texto vem de
+`"marquee"` no `exhibition.json`.
 
 ## Versão
 

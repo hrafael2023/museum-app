@@ -1,7 +1,8 @@
 {
   "id": "tomie-ohtake-teste",
   "title": "Instituto Tomie Ohtake",
-  "subtitle": "Teste com 6 cartazes",
+  "subtitle": "Exposição 25 anos",
+  "marquee": "Matéria Impressa",
   "language": "pt-BR",
   "ar": {
     "targets": "assets/targets/targets.mind",
