@@ -370,6 +370,322 @@
       "audio": {
         "src": null
       }
+    },
+    {
+      "id": "montanha-e-vale",
+      "kind": "Exposição",
+      "title": "Montanha e vale",
+      "subtitle": "Alice Shintani e Tomie Ohtake",
+      "dates": "De 28 de julho a 15 de novembro de 2026",
+      "info": "CAIXA Cultural Rio de Janeiro – Teatro Nelson Rodrigues · Entrada gratuita · Classificação livre",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/alice-shintani-e-tomie-ohtake-montanha-e-vale/",
+      "summary": "Reunindo pinturas, gravuras, esculturas e instalações, a mostra coloca em relação a produção de duas artistas de gerações distintas, propondo um encontro inédito entre diferentes modos de pensar a pintura, o espaço e a experiência estética.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Curadoria de Ana Roman e Catalina Bergues.",
+            "O Ministério da Cultura, CAIXA Vida e Previdência, Instituto Tomie Ohtake e CAIXA Cultural apresentam Alice Shintani e Tomie Ohtake – Montanha e vale, exposição em cartaz na CAIXA Cultural – Teatro Nelson Rodrigues.",
+            "Distribuídas pelas duas salas expositivas da CAIXA Cultural – Teatro Nelson Rodrigues e também pelo espaço de passagem entre elas, as obras articulam tensões e aproximações entre as duas trajetórias."
+          ]
+        },
+        {
+          "heading": "Visitação",
+          "paragraphs": [
+            "CAIXA Cultural Rio de Janeiro – Teatro Nelson Rodrigues.",
+            "Endereço: Av. República do Paraguai, 230 – Centro RJ.",
+            "Terça a sexta, das 10h às 19h. Sábados, domingos e feriados, das 11h às 18h."
+          ]
+        },
+        {
+          "heading": "Sobre Tomie Ohtake",
+          "paragraphs": [
+            "Tomie Ohtake (1913–2015) nasceu em Quioto, no Japão, e chegou a São Paulo em 1936. No Brasil, casou-se com Ushio Ohtake, com quem teve dois filhos, Ruy Ohtake (1938–2021) e Ricardo Ohtake (1942), e de quem mais tarde se separou. Começou a pintar aos 39 anos e, a partir de 1952, desenvolveu uma pesquisa marcada pela abstração e pela experimentação contínua. Suas pinturas em tinta a óleo frequentemente partiam de recortes e colagens preparatórias, que orientavam a construção de formas e campos de cor. Mais tarde, a adoção da tinta acrílica permitiu explorar novas relações de fluidez, transparência e profundidade. A partir dos anos 1970, sua produção expandiu-se da pintura para a gravura e, na década seguinte, também para a escultura e para obras públicas de grande escala. Produziu até o fim da vida, falecendo aos 101 anos."
+          ]
+        },
+        {
+          "heading": "Sobre Alice Shintani",
+          "paragraphs": [
+            "Alice Shintani (1971) nasceu na divisa entre Diadema e São Paulo. Formada em engenharia da computação, atuou na área antes de iniciar sua trajetória no campo artístico no início dos anos 2000. Sua prática parte da pintura como campo aberto de experimentação, expandindo-se em instalações, ações coletivas, intervenções no espaço urbano e situações expositivas. Seus trabalhos articulam estratégias lúdicas e de aparente simplicidade, deslocando modos de circulação, valor e visibilidade da arte, e as relações entre obra, espaço e público. Entre 2013 e 2016, trabalhou como vendedora ambulante de brigadeiros em ruas e feiras livres do centro financeiro de São Paulo, experiência que passou a atravessar sua produção e deu origem a desdobramentos como as séries Mata e Menas, apresentadas na 34ª Bienal de São Paulo – Faz escuro mas eu canto (2020–2021)."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/montanha-e-vale/1.jpg",
+          "alt": "Entrada da exposição, com o título Montanha e vale e os nomes das artistas nas paredes"
+        },
+        {
+          "src": "assets/content/montanha-e-vale/2.jpg",
+          "alt": "Escada com o nome de Tomie Ohtake na parede"
+        },
+        {
+          "src": "assets/content/montanha-e-vale/3.jpg",
+          "alt": "Parede com pinturas coloridas de Alice Shintani"
+        },
+        {
+          "src": "assets/content/montanha-e-vale/4.jpg",
+          "alt": "Sala com pinturas vermelhas e escuras e caixas de papelão no chão"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/montanha-e-vale.jpg",
+        "aspect": 1.461
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "contrarregra",
+      "kind": "Exposição",
+      "title": "Contrarregra",
+      "subtitle": "Tatiana Blass",
+      "dates": "De 28 de agosto a 24 de outubro de 2026",
+      "info": "Entrada gratuita · Verifique a classificação indicativa",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/tatiana-blass-contrarregra/",
+      "summary": "A mostra reúne cerca de 50 obras produzidas entre 2008 e 2026, entre pinturas, esculturas, instalações, vídeos e um conjunto de trabalhos inéditos, oferecendo um panorama da produção da artista e de sua investigação sobre matéria, espaço, luz e tempo.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Curadoria de Ana Roman e Lahayda Mamani Poma.",
+            "O título da exposição faz referência à figura do contrarregra, responsável por organizar os bastidores e criar as condições para que a cena aconteça sem ocupar o centro do palco. A partir dessa ideia, a mostra aproxima a prática da artista à lógica teatral ao apresentar obras que deslocam a atenção do resultado para os processos que tornam a imagem possível. Embora tenha a pintura como ponto de partida, sua produção se expande para diferentes linguagens – como esculturas, instalações, vídeos e performances – e materiais, como vidro, bronze, cera, cerâmica, entre outros.",
+            "Entre os destaques da exposição estão um núcleo significativo de obras inéditas, desenvolvido especialmente para o Instituto Tomie Ohtake, e trabalhos de diferentes momentos da trajetória da artista. As novas pinturas da série Contraluz, realizadas sobre vidro, incorporam a arquitetura, a incidência da luz e o deslocamento do visitante à própria imagem, enquanto obras das séries Metade da fala no chão, Quebra-quebra, Nó, Noite-dia e Contrarregra evidenciam o diálogo que a artista propõe entre pintura, escultura, som e palavra.",
+            "A transformação da matéria ocupa um lugar central na mostra. Em diferentes trabalhos, materiais como cera, vidro, bronze e cerâmica permanecem em constante estado de mudança, incorporando o tempo como parte da própria obra. Em vez de apresentar formas definitivas, Tatiana Blass cria trabalhos que se alteram pela ação da luz, do calor, da gravidade ou da presença do público, fazendo da transformação um elemento constitutivo da experiência expositiva.",
+            "Desenvolvida em diálogo com a artista, a expografia transforma as salas expositivas em um espaço de encenação. A montagem incorpora dois palcos, que passam a integrar o percurso do público e estabelecem relações diretas com as obras. Mais do que elementos cenográficos, esses dispositivos evidenciam a ideia de bastidor que atravessa toda a exposição.",
+            "A mostra traz ainda obras inéditas que resultam do encontro entre Tatiana Blass e o músico Kiko Dinucci. A partir de pinturas recentes da artista, os dois iniciaram um diálogo que resultou na capa do novo álbum do compositor e, posteriormente, em uma série de trabalhos desenvolvidos especialmente para a exposição."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/contrarregra/1.jpg",
+          "alt": "Portal de madeira na entrada da exposição, com os nomes Contrarregra e Tatiana Blass"
+        },
+        {
+          "src": "assets/content/contrarregra/2.jpg",
+          "alt": "Vista do salão com pinturas nas paredes"
+        },
+        {
+          "src": "assets/content/contrarregra/3.jpg",
+          "alt": "Pintura emoldurada em estrutura de madeira, iluminada por refletores"
+        },
+        {
+          "src": "assets/content/contrarregra/4.jpg",
+          "alt": "Bateria derretida em cera branca sobre o chão"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/contrarregra.jpg",
+        "aspect": 1.407
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "olho-dagua",
+      "kind": "Exposição",
+      "title": "Olho d’água",
+      "subtitle": "Patricia Leite",
+      "dates": "De 14 de março a 25 de maio de 2025",
+      "info": "Entrada gratuita · Acesso à visitação até 18h · Classificação livre",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/patricia-leite-olho-dagua/",
+      "summary": "A exposição reúne cerca de 30 obras, entre desenhos, pinturas e objetos que perpassam os quarenta anos da trajetória artística de Patricia Leite.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Curadoria de Germano Dushá.",
+            "Algumas das mais emblemáticas obras de Leite estão na exposição, como pinturas nas quais a artista cria o que chama de “sensações de paisagens”: obras cujas fontes de inspiração possam ter sido viagens, diálogos com amigos, letras de músicas, cenas de filmes, trechos de poesias, recordações marcantes ou fotografias tiradas por ela ou encontradas.",
+            "As pinturas de Patricia Leite trazem composições sintéticas formadas por grandes blocos de cor, pinceladas visíveis e texturas marcantes. A paleta cromática é ao mesmo tempo sensível e vibrante, expondo contrastes sutis entre tons rebaixados e forte luminosidade."
+          ]
+        },
+        {
+          "heading": "Sobre a artista",
+          "paragraphs": [
+            "Vive e trabalha em São Paulo.",
+            "Algumas das exposições individuais da artista incluem: Paisagem de Lenda, Thomas Dane Gallery, Londres (2024); Mantiqueira, Mendes Wood DM, Nova York (2022); Caninana, Thomas Dane Gallery, Londres (2021); Vamos chamar o vento, Mendes Wood DM, São Paulo (2020); Patricia Leite, The Arts Club, Londres (2019); Olha pro céu, meu amor, Mendes Wood DM, Bruxelas (2018); Saudades do Brasil, Mendes Wood DM, São Paulo (2015); Contra o Céu, Nara Roesler, São Paulo (2009); Outra Praia, Museu de Arte da Pampulha, Belo Horizonte (2005).",
+            "Adicionalmente, seu trabalho foi incluído em exposições coletivas como: Galáxias, Mendes Wood DM, Bruxelas (2024); Amadeo Luciano Lorenzato em conversa com Lucas Arruda, Sanam Khatibi, Patricia Leite, Paula Siebra, Marcos Siqueira, Erika Verzutti e Castiel Vitorino Brasileiro, Mendes Wood DM, Paris (2024); Dreaming of Spilliaert, Mendes Wood DM na d’Ouwe Kerk, Retranchement (2024); Linhas Tortas, Mendes Wood DM, São Paulo (2023); Esfingico Frontal, Mendes Wood DM, São Paulo (2023); Calor Universal, Pace Gallery, Nova York (2022); Days of Inertia, Mendes Wood DM na d’Ouwe Kerk, Retranchement (2021); Prelude: Melancholy of the Future, Museum Dhondt-Dhaenens, Sint-Martens-Latem (2020); Terra Trema, Thomas Dane, Nápoles (2019); Nightfall, Mendes Wood DM, Bruxelas (2018); Mínimo, múltiplo, comum, Estação Pinacoteca, São Paulo (2018); Aprendendo com Dorival Caymmi – Civilização Praieira, Instituto Tomie Ohtake, São Paulo (2016).",
+            "Seus trabalhos fazem parte de inúmeras coleções permanentes, como: Coleção Pinault, Paris; Pinacoteca do Estado de São Paulo, São Paulo; Fiorucci Art Trust, Londres; Thyssen-Bornemisza Art Contemporary, Viena; Cranford Collection, Londres; Loewe Collection, Madrid; Museu de Arte da Pampulha, Belo Horizonte."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/olho-dagua/1.jpg",
+          "alt": "Pintura de paisagem noturna com lua, numa parede longa"
+        },
+        {
+          "src": "assets/content/olho-dagua/2.jpg",
+          "alt": "Sala curva com uma grande pintura escura e uma pessoa passando"
+        },
+        {
+          "src": "assets/content/olho-dagua/3.jpg",
+          "alt": "Vitrine com pequenos objetos e esculturas"
+        },
+        {
+          "src": "assets/content/olho-dagua/4.jpg",
+          "alt": "Visitante diante de uma pintura verde de mata e água"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/olho-dagua.jpg",
+        "aspect": 1.489
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "aguas-subterraneas",
+      "kind": "Exposição",
+      "title": "Águas subterrâneas",
+      "subtitle": "Narrativas de confluências",
+      "dates": "De 14 de novembro de 2025 a 8 de março de 2026",
+      "info": "Entrada gratuita · Verifique a classificação indicativa",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/aguas-subterraneas-narrativas-de-confluencias/",
+      "summary": "Realizada primeiro na França (23.MAI—28.SET 2025) e agora no Brasil, esta exposição coletiva em duas etapas reúne múltiplos olhares de artistas contemporâneos sobre os cursos de água doce e os relatos culturais, históricos e ambientais que os atravessam.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Curadoria de Ana Roman, Catalina Bergues e Irene Aristizábal.",
+            "No contexto da Temporada França-Brasil 2025, o Frac Poitou-Charentes e o Instituto Tomie Ohtake apresentam Águas subterrâneas: narrativas de confluências.",
+            "Concebida como um diálogo imaginário entre o rio Charente e os rios de São Paulo, como o Tietê – que percorrem, respectivamente, os territórios do Frac Poitou-Charentes (Angoulême) e do Instituto Tomie Ohtake (São Paulo), onde será sucessivamente apresentada –, a exposição reúne obras de doze artistas franceses e brasileiros:",
+            "Barbara Kairos, Capucine Vever, Coletivo Coletores, Daniel de Paula, Davi de Jesus do Nascimento, Julien Creuzet, Luana Vitra, Marcos Ávila Forero, Rastros de Diógenes, Shivay La Multiple, Suzanne Husky e Vitor Cesar & Enrico Rocha.",
+            "Diante das mudanças climáticas, as obras apresentadas exploram temas como a escassez de água, a relação da água com as histórias coloniais e extrativistas, as questões de infraestrutura e os futuros possíveis. Águas subterrâneas: narrativas de confluências destaca práticas artísticas que reconhecem os cursos d’água como seres vivos com direitos intrínsecos, mas também como testemunhas ancestrais, participantes da história humana e agentes de transformação e encontros."
+          ]
+        },
+        {
+          "heading": "Sobre o Frac Poitou-Charentes",
+          "paragraphs": [
+            "É um dos três Fundos Regionais de Arte Contemporânea existentes na região da Nova-Aquitânia, na França. Sua missão é a constituição de uma coleção de arte contemporânea e sua difusão, graças às suas instalações regionais em Angoulême e Linazay, bem como às parcerias locais que estabelece com os atores culturais, sociais, educacionais e as autoridades municipais. Entre exposições, residências de criação, produção, difusão, conservação, documentação das obras, ações de educação artística e cultural, o Frac Poitou-Charentes busca se envolver ao lado dos artistas em todos os aspectos de sua atividade. Suas operações de difusão são acompanhadas de ações de mediação para facilitar e aprofundar o acesso às obras e aos processos criativos contemporâneos. Sua coleção atualmente conta com mais de mil obras. Enriquecida a cada ano com novas aquisições, ela é internacional e representativa dos desenvolvimentos mais recentes na arte contemporânea.",
+            "Desde 2024, a instituição iniciou uma fase de transição com a chegada de Irene Aristizábal à sua direção. Os eixos de orientação de seu projeto para o Frac Poitou-Charentes, intitulado “Autopoïèse et interdépendance radicale” [Autopoiese e Interdependência Radical], testemunham a vontade de iniciar uma transição ecológica e social, de reposicionar a instituição em seu contexto territorial, colocando os artistas no centro de todas as atividades e dando atenção especial aos contextos rurais. Em diálogo com o tecido local, o projeto abre para mais colaborações e co-criações, reafirma seu compromisso com a cena artística e também carrega uma ambição de projeção nacional e internacional."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/aguas-subterraneas/1.jpg",
+          "alt": "Entrada da exposição, com o título escrito em letras verdes"
+        },
+        {
+          "src": "assets/content/aguas-subterraneas/2.jpg",
+          "alt": "Grande instalação de barro e gotas pintadas na parede, com pequenas telas"
+        },
+        {
+          "src": "assets/content/aguas-subterraneas/3.jpg",
+          "alt": "Sala com uma cabine fechada por cortina e obras nas paredes"
+        },
+        {
+          "src": "assets/content/aguas-subterraneas/4.jpg",
+          "alt": "Projeções de desenhos azuis e vídeo de um rio"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/aguas-subterraneas.jpg",
+        "aspect": 1.48
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "hiromi-nagakura",
+      "kind": "Exposição",
+      "title": "Hiromi Nagakura até a Amazônia com Ailton Krenak",
+      "subtitle": "Fotografias de Hiromi Nagakura",
+      "dates": "De 26 de abril a 26 de julho de 2025",
+      "info": "MIS Ceará – Museu da Imagem e do Som Chico Albuquerque, Fortaleza · Entrada gratuita",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/mis-ceara-hiromi-nagakura-ate-a-amazonia-com-ailton-krenak/",
+      "summary": "Em agosto de 1993 deu-se o primeiro de muitos encontros que uniriam dois caminhos aparentemente tão diversos. Hiromi Nagakura, fotógrafo japonês, havia chegado recentemente ao Brasil para mais uma de suas viagens. Ainda não conhecia pessoalmente o ativista indígena Ailton Krenak, mas ao tomar contato com as imagens do discurso emblemático do futuro amigo na Assembleia Constituinte (1987), almejou tê-lo como parceiro e interlocutor em sua busca pelas diferentes etnias dos povos originários brasileiros.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Curadoria de Ailton Krenak.",
+            "Além da distância geográfica, a barreira do idioma também parecia ser um entrave para esse encontro. Eliza Otsuka, intérprete de Nagakura, foi responsável pela aproximação desses universos, participando a partir daí de uma série de percursos realizados em conjunto, embriões de uma longeva amizade.",
+            "A exposição agora apresentada ao público brasileiro traz uma seleção única de registros realizados pelo grande fotógrafo japonês nos anos 1990 por meio de diversas expedições aos estados do Acre, Roraima, Mato Grosso, Maranhão, São Paulo, Pará e Amazonas. Juntos, Krenak e Nagakura puderam aproximar-se, conviver e registrar a cultura dos povos Krikati, Gavião, Xavante, Huni Kuin, Yawanawá, Ashaninka e Yanomami.",
+            "Com curadoria de Ailton Krenak, a mostra – que já passou pelas cidades de São Paulo, Rio de Janeiro, Brasília e Belo Horizonte – chega agora a Fortaleza com a possibilidade singular de percorrer a potente trajetória de Hiromi Nagakura no fotojornalismo internacional."
+          ]
+        },
+        {
+          "heading": "Itinerância",
+          "paragraphs": [
+            "Esta exposição acontece no Museu da Imagem e do Som Chico Albuquerque (MIS Ceará), em Fortaleza (CE); originalmente, esteve no Instituto Tomie Ohtake, em São Paulo (24.OUT 2024—4.FEV 2025)."
+          ]
+        },
+        {
+          "heading": "Sobre Hiromi Nagakura",
+          "paragraphs": [
+            "Hiromi Nagakura nasceu em 1952 na cidade de Kushiro, ao norte da ilha de Hokkaido, no Japão. Desde criança, amou gente e a natureza, interessado em pessoas e culturas de outros lugares do mundo.",
+            "Sentia-se atraído pelo novo, pelo desconhecido. Viajou para destinos diversos, visitou as ilhas do Pacífico Sul, entrou em contato com povos nômades do Afeganistão. Foi então que sentiu a necessidade de documentar seus encontros e começou a praticar e se aperfeiçoar nas técnicas da fotografia. Para ele, desde o início, a fotografia sempre foi um instrumento para se relacionar com o mundo e a diversidade de culturas, paisagens e pensamentos. Formou-se em direito, mas seguiu a carreira de fotógrafo.",
+            "Trabalhou na agência noticiosa Jiji Press porque admirava os fotógrafos reconhecidos por seus trabalhos de cobertura de guerras.",
+            "Em 1979, com 27 anos, Nagakura decidiu tornar-se fotojornalista independente, caminho que acabou levando-o a conhecer a África do Sul, Zimbábue, União Soviética, Afeganistão, Turquia, Líbano, El Salvador, Bolívia, Peru, Brasil, Indonésia, México, Groenlândia e vários outros países, em todos os continentes. Realizou centenas de viagens e exposições, publicou dezenas de livros, foi personagem de inúmeros documentários, escreveu reportagens, ministrou oficinas e palestras, recebeu prêmios.",
+            "Sua obra, já reconhecida no Japão, é exposta pela primeira vez no Brasil na exposição Hiromi Nagakura até a Amazônia com Ailton Krenak, com curadoria desse amigo e personagem de seu trabalho."
+          ]
+        },
+        {
+          "heading": "Sobre Ailton Krenak",
+          "paragraphs": [
+            "Ailton Alves Lacerda Krenak nasceu em 1953 no Vale do Rio Doce, em Minas Gerais, quando o povo Krenak vivia no exílio, expulso de seu território tradicional por invasores que ocuparam e depredaram as matas densas às margens do Watu, como o povo originário chama seu avô-rio.",
+            "Depois, nos anos de ditadura, a antiga aldeia Krenak foi transformada em prisão indígena, testemunha da violência contra os povos que insistiam em desafiar a ordem imposta vivendo de um modo diferente.",
+            "Ailton viveu parte de sua vida em São Paulo, onde estudou e começou sua militância no movimento que começava a surgir no final dos anos 1970, reunindo indígenas de muitas etnias em torno de uma luta comum por direitos.",
+            "Sua imagem pintando o rosto de preto no Congresso Nacional tornou-se símbolo da resistência indígena na Constituinte. Coordenou a União das Nações Indígenas, o Núcleo de Cultura Indígena, o Centro de Pesquisa Indígena, a Embaixada dos Povos da Floresta e a Aliança dos Povos da Floresta ao lado de seringueiros, extrativistas e ribeirinhos pela vida da (e com a) Floresta.",
+            "Regressou nos anos 2000 a seu território, que ajudara a consolidar em 1999. Hoje vive às margens do Watu, ferido pela lama do rompimento da barragem de dejetos da Samarco em 2015. Ali o povo se fortalece, rememora a língua e os ritos, restabelece a vida.",
+            "Nos últimos anos, Ailton Krenak tem se dedicado à manifestação do pensamento através do som e do poder sagrado das palavras, refletindo sobre temas que afetam a todas e todos nós, seres vivos de todas as humanidades, companheiros da mesma canoa Terra que navega no firmamento.",
+            "Suas palavras estão registradas em livros que nos aproximam da cosmologia dos povos originários e confrontam nossa vida cotidiana. Autor de Ideias para adiar o fim do mundo (2019), A vida não é útil (2020) e Futuro ancestral (2022). É comendador da Ordem de Mérito Cultural da Presidência da República e doutor honoris causa pela Universidade Federal de Minas Gerais e pela Universidade Federal de Juiz de Fora. Em 2023, foi eleito como o primeiro indígena membro da Academia Brasileira de Letras.",
+            "Conheceu Hiromi Nagakura em 1993, e agora, 30 anos depois, eles se reencontram nas curvas dos rios amazônicos na mostra de fotografias “Hiromi Nagakura até a Amazônia com Ailton Krenak”."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/hiromi-nagakura/1.jpg",
+          "alt": "Fotografia noturna: pessoa sob uma grande cobertura de palha"
+        },
+        {
+          "src": "assets/content/hiromi-nagakura/2.jpg",
+          "alt": "Mãos pintadas de vermelho segurando uma fruta, com palmeiras ao fundo"
+        },
+        {
+          "src": "assets/content/hiromi-nagakura/3.jpg",
+          "alt": "Crianças com pintura vermelha no rosto, num barco sobre o lago"
+        },
+        {
+          "src": "assets/content/hiromi-nagakura/4.jpg",
+          "alt": "Homem com o corpo pintado carregando uma criança"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/hiromi-nagakura.jpg",
+        "aspect": 1.391
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
     }
   ]
 }

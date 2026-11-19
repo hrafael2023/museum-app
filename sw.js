@@ -3,7 +3,7 @@
 // - O pacote pesado (bibliotecas, alvos, imagens) entra no cache
 //   'museum-app-offline' quando o visitante toca em "Baixar conteúdo".
 // Mude CACHE_VERSION a cada publicação (igual ao arquivo VERSAO).
-const CACHE_VERSION = '0.3.5';
+const CACHE_VERSION = '0.3.6';
 const SHELL_CACHE = `museum-app-shell-${CACHE_VERSION}`;
 const OFFLINE_CACHE = 'museum-app-offline';
 
@@ -55,15 +55,39 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Arquivos que não mudam de conteúdo: servir do cache primeiro.
-const CACHE_FIRST = /\/(vendor|assets)\//;
+// Bibliotecas (vendor/) nunca mudam no mesmo endereço: cache primeiro.
+const CACHE_FIRST = /\/vendor\//;
+// Conteúdo (assets/: alvos, imagens, áudios) pode ser refeito com o mesmo nome,
+// como o targets.mind ao incluir cartazes ou um áudio gerado de novo: rede
+// primeiro (o navegador só baixa de novo o que mudou) e cache sem internet.
+// Quando a rede traz uma versão nova de algo que está no pacote offline, o
+// pacote é atualizado junto.
+const CONTENT = /\/assets\//;
 
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET' || new URL(request.url).origin !== location.origin) return;
+  const path = new URL(request.url).pathname;
 
-  if (CACHE_FIRST.test(new URL(request.url).pathname)) {
+  if (CACHE_FIRST.test(path)) {
     event.respondWith(caches.match(request, { ignoreSearch: true }).then((hit) => hit || fetch(request)));
+    return;
+  }
+
+  if (CONTENT.test(path)) {
+    event.respondWith(
+      fetch(request)
+        .then((res) => {
+          if (res.ok && res.status === 200) {
+            const copy = res.clone();
+            caches.open(OFFLINE_CACHE).then(async (c) => {
+              if (await c.match(request, { ignoreSearch: true })) await c.put(request, copy);
+            });
+          }
+          return res;
+        })
+        .catch(() => caches.match(request, { ignoreSearch: true }).then((hit) => hit || Response.error())),
+    );
     return;
   }
 

@@ -7,7 +7,7 @@ internet.
 
 Publicado no GitHub Pages: https://hrafael2023.github.io/museum-app/
 
-Primeiro teste: 6 cartazes do Instituto Tomie Ohtake.
+Teste com 11 cartazes do Instituto Tomie Ohtake.
 
 ## Como usar
 
