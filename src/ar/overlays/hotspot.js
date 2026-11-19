@@ -42,9 +42,15 @@ export function createHotspot(config, { THREE, anchor, item, camera, layer, sele
       hideTimer = null;
       active = true;
     },
-    hide() {
+    hide({ immediate = false } = {}) {
       active = false;
       clearTimeout(hideTimer);
+      if (immediate) {
+        hideTimer = null;
+        button.hidden = true;
+        placed = null;
+        return;
+      }
       hideTimer = setTimeout(() => {
         hideTimer = null;
         if (!active) { button.hidden = true; placed = null; }

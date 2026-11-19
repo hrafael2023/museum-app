@@ -3,7 +3,7 @@
 // - O pacote pesado (bibliotecas, alvos, imagens) entra no cache
 //   'museum-app-offline' quando o visitante toca em "Baixar conteúdo".
 // Mude CACHE_VERSION a cada publicação (igual ao arquivo VERSAO).
-const CACHE_VERSION = '0.3.8';
+const CACHE_VERSION = '0.3.9';
 const SHELL_CACHE = `museum-app-shell-${CACHE_VERSION}`;
 const OFFLINE_CACHE = 'museum-app-offline';
 

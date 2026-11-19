@@ -65,6 +65,14 @@ export class ImageTracker extends Emitter {
       };
       entry.overlays = createOverlays(item.overlays ?? [{ type: 'hotspot' }], ctx);
       anchor.onTargetFound = () => {
+        // Um quadro que ainda estava sendo processado quando o rastreamento foi
+        // pausado (conteúdo aberto) pode chegar depois: ignora e esquece.
+        if (this.paused) {
+          anchor.visible = false;
+          anchor.group.visible = false;
+          this.#resetTracking(entry);
+          return;
+        }
         entry.visible = true;
         entry.overlays.forEach((o) => o.show?.());
         this.emit('found', { item });
@@ -139,10 +147,10 @@ export class ImageTracker extends Emitter {
     return true;
   }
 
-  // Encerra o rastreamento de um alvo no MindAR e dispara o 'lost'.
-  #forceLost(entry) {
-    const controller = this.mindar?.controller;
-    const state = controller?.trackingStates?.[entry.item.targetIndex];
+  // Zera o rastreamento de um alvo no MindAR: ele só volta a aparecer depois
+  // de ser detectado de novo na imagem da câmera.
+  #resetTracking(entry) {
+    const state = this.mindar?.controller?.trackingStates?.[entry.item.targetIndex];
     entry.badFrames = 0;
     if (state) {
       state.isTracking = false;
@@ -151,10 +159,18 @@ export class ImageTracker extends Emitter {
       state.trackMiss = 0;
       state.trackingMatrix = null;
     }
-    controller?.onUpdate?.({ type: 'updateMatrix', targetIndex: entry.item.targetIndex, worldMatrix: null });
   }
 
-  // Para o processamento (economiza bateria) sem desligar a câmera.
+  // Encerra o rastreamento de um alvo no MindAR e dispara o 'lost'.
+  #forceLost(entry) {
+    this.#resetTracking(entry);
+    this.mindar?.controller?.onUpdate?.({ type: 'updateMatrix', targetIndex: entry.item.targetIndex, worldMatrix: null });
+  }
+
+  // Para o processamento (economiza bateria) sem desligar a câmera. Usado ao
+  // abrir um conteúdo: some com todos os marcadores na hora e esquece onde os
+  // cartazes estavam, para que, ao voltar, só apareçam os que estiverem de
+  // fato na câmera.
   pause() {
     if (!this.running || this.paused) return;
     this.paused = true;
@@ -164,7 +180,8 @@ export class ImageTracker extends Emitter {
       entry.visible = false;
       entry.anchor.group.visible = false;
       entry.anchor.visible = false;
-      entry.overlays.forEach((o) => o.hide?.());
+      this.#resetTracking(entry);
+      entry.overlays.forEach((o) => o.hide?.({ immediate: true }));
     }
   }
 
