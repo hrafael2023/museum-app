@@ -3,7 +3,11 @@ import { settings } from '../core/settings.js';
 import { narrationText } from '../content/repository.js';
 
 // Audioguia. Toca o áudio gravado do item (item.audio.src) quando existir;
-// senão, lê o texto do item com a voz do aparelho (funciona sem internet).
+// senão, ou se o arquivo não carregar, lê o texto com a voz do aparelho.
+//
+// Um único elemento <audio> é reaproveitado para todas as narrações: no iOS,
+// depois de liberado por um toque (unlock), ele pode tocar sozinho quando um
+// cartaz é reconhecido na câmera.
 //
 // Eventos: 'state' { status: 'playing' | 'paused' | 'stopped', item }
 class Narrator extends Emitter {
@@ -11,7 +15,12 @@ class Narrator extends Emitter {
     super();
     this.item = null;
     this.status = 'stopped';
-    this.audio = null;
+    this.audio = null;      // o elemento abaixo, enquanto toca um arquivo
+    this.el = typeof Audio !== 'undefined' ? new Audio() : null;
+    if (this.el) {
+      this.el.preload = 'auto';
+      this.el.addEventListener('ended', () => { if (this.audio) this.stop(); });
+    }
     this.synth = window.speechSynthesis ?? null;
     this.voice = null;
     this.chunks = [];
@@ -21,6 +30,8 @@ class Narrator extends Emitter {
       pick();
       this.synth.addEventListener?.('voiceschanged', pick);
     }
+    // O primeiro toque em qualquer lugar do app já libera o áudio.
+    document.addEventListener('pointerdown', () => this.unlock(), { once: true, capture: true });
   }
 
   get available() {
@@ -30,6 +41,11 @@ class Narrator extends Emitter {
   // No iOS a voz só toca depois de um toque do visitante. Chame isto dentro de
   // um clique (ex.: botão "Iniciar audioguia") para liberar a reprodução automática.
   unlock() {
+    if (this.el && !this.audio && !this.unlocked) {
+      this.unlocked = true;
+      this.el.src = SILENCE;
+      this.el.play().catch(() => {});
+    }
     if (!this.synth) return;
     const u = new SpeechSynthesisUtterance(' ');
     u.volume = 0;
@@ -67,6 +83,8 @@ class Narrator extends Emitter {
   stop() {
     if (this.audio) {
       this.audio.pause();
+      this.audio.removeAttribute('src');
+      this.audio.load();
       this.audio = null;
     }
     if (this.synth) {
@@ -82,9 +100,17 @@ class Narrator extends Emitter {
   }
 
   #playFile(src) {
-    this.audio = new Audio(src);
-    this.audio.addEventListener('ended', () => this.stop());
-    this.audio.play().then(() => this.#set('playing')).catch(() => this.stop());
+    if (!this.el) return this.#speak(narrationText(this.item));
+    const item = this.item;
+    this.audio = this.el;
+    this.audio.src = src;
+    this.#set('playing');
+    this.audio.play().catch((err) => {
+      if (this.item !== item) return; // outra narração começou
+      this.audio = null;
+      if (err?.name === 'NotAllowedError') return this.stop(); // falta um toque do visitante
+      this.#speak(narrationText(item)); // arquivo indisponível: usa a voz do aparelho
+    });
   }
 
   #speak(text) {
@@ -130,5 +156,8 @@ class Narrator extends Emitter {
     this.emit('state', { status, item: this.item });
   }
 }
+
+// Um WAV vazio, tocado no primeiro toque só para liberar o áudio.
+const SILENCE = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 
 export const narrator = new Narrator();

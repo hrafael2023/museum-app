@@ -52,6 +52,7 @@ src/
 sw.js                      service worker (cache e funcionamento offline)
 tools/compilar-alvos.html  gera assets/targets/targets.mind a partir das imagens
 tools/servidor.py          servidor local que também salva o targets.mind
+tools/gerar-audio.py       gera as narrações em mp3 com a voz do Gemini
 vendor/                    MindAR 1.2.5 e three.js 0.160 (cópias locais, para o offline)
 ```
 
@@ -66,9 +67,23 @@ Sem etapa de build: é HTML, CSS e JavaScript (módulos ES) servidos como estão
 3. Rode `python3 tools/servidor.py`, abra http://localhost:8000/tools/compilar-alvos.html
    e clique em **Compilar**. O `targets.mind` é salvo no projeto.
 
-**Áudio gravado**: em vez da voz do aparelho, ponha um arquivo em
-`assets/audio/` e preencha `"audio": { "src": "assets/audio/x.mp3" }` no item.
-Para mudar só o texto narrado, use `"audio": { "script": "..." }`.
+**Narração com voz natural (Gemini)**: `tools/gerar-audio.py` gera um mp3 por
+item com uma voz do Gemini, em português do Brasil, e preenche `"audio": {"src": ...}`.
+Cada trecho gerado é transcrito e comparado com o texto; se não bater, é refeito.
+A chave da API fica só no computador (`GEMINI_API_KEY` ou
+`~/.config/museum-app/gemini_api_key`), nunca no app.
+
+```bash
+python3 tools/gerar-audio.py            # gera só o que mudou
+python3 tools/gerar-audio.py --forcar   # gera tudo de novo
+```
+
+Voz e estilo podem ir em `"narration": {"voice": ..., "style": ...}` no
+`exhibition.json`. Na cota gratuita do Gemini há um limite de pedidos por dia;
+se acabar, o script para e retoma de onde parou na próxima vez.
+Para mudar só o texto narrado, use `"audio": { "script": "..." }`. Também dá
+para pôr uma gravação feita por uma pessoa em `assets/audio/` e apontar `src` para ela.
+Sem arquivo, o app lê o texto com a voz do aparelho.
 
 **Elementos 3D sobre a câmera**: cada item lista suas camadas em `"overlays"`.
 Para um novo tipo (modelo 3D, vídeo, animação), crie um arquivo em
