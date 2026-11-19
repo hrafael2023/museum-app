@@ -1,4 +1,4 @@
-import { h, icons, iconButton } from '../dom.js';
+import { h, icons, header } from '../dom.js';
 import { settings } from '../../core/settings.js';
 import { offline, formatBytes } from '../../offline/offline.js';
 import { narrator } from '../../audio/narrator.js';
@@ -18,10 +18,10 @@ export function settingsView(root) {
   });
 
   // Download offline
-  const offlineStatus = h('p', { class: 'setting__hint' }, 'Verificando…');
-  const progress = h('progress', { max: '1', value: '0', hidden: true });
-  const downloadBtn = h('button', { class: 'btn btn--primary', type: 'button', html: `${icons.download}<span>Baixar conteúdo</span>` });
-  const removeBtn = h('button', { class: 'btn btn--ghost', type: 'button', hidden: true }, 'Remover do aparelho');
+  const offlineStatus = h('p', { class: 't-body setting__hint' }, 'Verificando…');
+  const progress = h('progress', { class: 'ds-progress', max: '1', value: '0', hidden: true });
+  const downloadBtn = h('button', { class: 'ds-btn ds-btn--primary', type: 'button', html: `${icons.download}<span>Baixar conteúdo</span>` });
+  const removeBtn = h('button', { class: 'ds-btn', type: 'button', hidden: true }, 'Remover do aparelho');
 
   async function refresh() {
     if (!offline.supported) {
@@ -73,27 +73,24 @@ export function settingsView(root) {
 
   root.append(
     h('main', { class: 'page settings' },
-      h('div', { class: 'topbar topbar--light topbar--sticky' },
-        iconButton('back', 'Voltar', () => (history.length > 1 ? history.back() : (location.hash = '#/'))),
-        h('h1', { class: 'topbar__title' }, 'Ajustes'),
-        h('span'),
-      ),
-      h('section', { class: 'setting' },
+      header({ back: () => (history.length > 1 ? history.back() : (location.hash = '#/')) }),
+      h('h1', { class: 't-title page__title ds-band' }, 'Ajustes'),
+      h('section', { class: 'setting ds-band' },
         h('div', { class: 'setting__row' },
-          h('label', { for: 'set-audio' },
-            h('strong', {}, 'Áudio'),
-            h('span', { class: 'setting__hint' }, 'Narração dos conteúdos e modo audioguia.'),
+          h('label', { for: 'set-audio', class: 'setting__label' },
+            h('span', { class: 't-section' }, 'Áudio'),
+            h('span', { class: 't-body setting__hint' }, 'Narração dos conteúdos e modo audioguia.'),
           ),
-          h('span', { class: 'switch' }, audioToggle, h('span', { class: 'switch__track', 'aria-hidden': 'true' })),
+          h('span', { class: 'ds-switch' }, audioToggle, h('span', { class: 'ds-switch__track', 'aria-hidden': 'true' })),
         ),
       ),
-      h('section', { class: 'setting' },
-        h('strong', {}, 'Usar sem internet'),
+      h('section', { class: 'setting ds-band' },
+        h('span', { class: 't-section' }, 'Usar sem internet'),
         offlineStatus,
         progress,
         h('div', { class: 'setting__actions' }, downloadBtn, removeBtn),
       ),
-      h('p', { class: 'settings__version' }, `Museum App · v${VERSION}`),
+      h('p', { class: 't-meta settings__version' }, `Museum App · v${VERSION}`),
     ),
   );
 

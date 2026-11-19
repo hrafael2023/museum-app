@@ -3,10 +3,10 @@
 // pela projeção do ponto 3D do alvo na câmera.
 export function createHotspot(config, { THREE, anchor, item, camera, layer, select }) {
   const button = document.createElement('button');
-  button.className = 'hotspot';
+  button.className = 'ds-hotspot hotspot';
   button.type = 'button';
   button.setAttribute('aria-label', `Abrir ${item.title}`);
-  button.innerHTML = '<span class="hotspot__ring"></span><span class="hotspot__dot"></span>';
+  button.innerHTML = '<span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span>';
   button.hidden = true;
   button.addEventListener('click', (event) => {
     event.stopPropagation();

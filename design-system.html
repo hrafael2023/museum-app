@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design system Tomie</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-ink); font-family: var(--font-grotesque); font-size: var(--text-body); line-height: var(--leading-body); }
+    p { margin: 0; }
+    svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square; }
+    .ds-page { max-width: 1080px; margin: 0 auto; }
+    .block { padding: var(--space-6) var(--gutter); border-bottom: var(--rule) solid var(--color-rule); display: grid; gap: var(--space-5); }
+    .block > header { display: grid; gap: var(--space-2); }
+    .note { color: var(--color-muted); font-size: var(--text-small); max-width: 62ch; }
+    code { font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); }
+    .swatch { border: var(--rule) solid var(--color-rule); }
+    .swatch__chip { height: 88px; }
+    .swatch__meta { padding: var(--space-2) var(--space-3); display: grid; gap: 2px; font-size: 13px; }
+    .type-row { display: grid; grid-template-columns: 180px 1fr; gap: var(--space-4); align-items: baseline; padding: var(--space-3) 0; border-top: var(--rule) solid var(--color-rule); }
+    .type-row:first-child { border-top: 0; }
+    .widths { display: grid; gap: var(--space-2); }
+    .widths span { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 44px; line-height: 1; text-transform: uppercase; }
+    .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+    .demo { border: var(--rule) solid var(--color-rule); }
+    .demo--dark { background: #222; padding: var(--space-6); display: grid; place-items: center; position: relative; min-height: 180px; }
+    .demo--dark .ds-hotspot { position: relative; margin: 0; }
+    .spacing { display: grid; gap: var(--space-2); }
+    .spacing div { display: flex; align-items: center; gap: var(--space-3); font-size: 13px; }
+    .spacing i { display: block; height: 14px; background: var(--color-accent); }
+    @media (max-width: 640px) { .type-row { grid-template-columns: 1fr; gap: var(--space-1); } .widths span { font-size: 30px; } }
+  </style>
+</head>
+<body>
+  <div class="ds-page">
+    <header class="ds-header">
+      <a class="ds-header__action t-nav" href="./">App</a>
+      <div class="ds-header__center"></div>
+      <div class="ds-header__brand">
+        <span class="ds-signature"><span class="ds-signature__small">Design system</span><span class="ds-signature__big"><span>Museum </span><b>App</b></span></span>
+      </div>
+    </header>
+    <div class="ds-marquee" aria-hidden="true"><div class="ds-marquee__track">
+      <span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span><span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span><span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span><span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span>
+      <span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span><span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span><span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span><span class="ds-marquee__item">Design system</span><span class="ds-marquee__item">Tomie</span>
+    </div></div>
+
+    <section class="block">
+      <p class="t-label">Sobre</p>
+      <h1 class="t-title" style="margin:0">Design system Tomie</h1>
+      <p class="t-lead" style="max-width:34ch">A linguagem visual do site do Instituto Tomie Ohtake, traduzida para o app.</p>
+      <p class="note">Princípios: fundo branco e texto preto; o rosa marca estrutura e ação (fios, rótulos, bordas, botões); cantos retos; faixas horizontais separadas por fios de 2 px; uma família tipográfica usada em larguras diferentes, da comprimida à expandida. Tokens em <code>styles/tokens.css</code>, componentes em <code>styles/components.css</code>.</p>
+    </section>
+
+    <section class="block">
+      <header><p class="t-label">01</p><h2 class="t-section" style="margin:0">Cor</h2></header>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch__chip" style="background:var(--tomie-pink)"></div><div class="swatch__meta"><b>Rosa Tomie</b><code>--tomie-pink</code><code>#EC0C6D</code></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--tomie-pink-dark)"></div><div class="swatch__meta"><b>Rosa pressionado</b><code>--tomie-pink-dark</code><code>#C20058</code></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--tomie-black)"></div><div class="swatch__meta"><b>Preto</b><code>--tomie-black</code><code>#000000</code></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--tomie-white)"></div><div class="swatch__meta"><b>Branco</b><code>--tomie-white</code><code>#FFFFFF</code></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--tomie-gray)"></div><div class="swatch__meta"><b>Cinza</b><code>--tomie-gray</code><code>#C7C7C7</code></div></div>
+        <div class="swatch"><div class="swatch__chip" style="background:var(--tomie-gray-ink)"></div><div class="swatch__meta"><b>Cinza texto</b><code>--tomie-gray-ink</code><code>#5C5C5C</code></div></div>
+      </div>
+      <p class="note">O rosa sobre branco tem contraste 4,6:1: serve para rótulos em negrito e elementos gráficos. Texto corrido é sempre preto.</p>
+    </section>
+
+    <section class="block">
+      <header><p class="t-label">02</p><h2 class="t-section" style="margin:0">Tipografia</h2></header>
+      <p class="note">O site usa a família Chromatic (comercial). O app usa a Archivo, livre (SIL OFL), que tem eixo de largura de 62% a 125% e cobre os mesmos papéis. Se o Instituto ceder a Chromatic, ela entra sozinha: está primeiro em cada pilha de fontes.</p>
+      <div class="widths">
+        <span style="font-stretch:62%">Comprimida 62%</span>
+        <span style="font-stretch:72%">Condensada 72%</span>
+        <span style="font-stretch:85%">Compacta 85%</span>
+        <span style="font-stretch:100%">Normal 100%</span>
+        <span style="font-stretch:125%">Expandida 125%</span>
+      </div>
+      <div>
+        <div class="type-row"><code>.t-display</code><p class="t-display">Aponte</p></div>
+        <div class="type-row"><code>.t-title</code><p class="t-title">Roda dos Bichos</p></div>
+        <div class="type-row"><code>.t-nav</code><p class="t-nav">Voltar</p></div>
+        <div class="type-row"><code>.t-section</code><p class="t-section">Núcleos da mostra</p></div>
+        <div class="type-row"><code>.t-label</code><p class="t-label">Exposição</p></div>
+        <div class="type-row"><code>.t-meta</code><p class="t-meta">De 2 de março a 2 de junho de 2024</p></div>
+        <div class="type-row"><code>.t-lead</code><p class="t-lead">O Instituto Tomie Ohtake apresenta Roda dos Bichos.</p></div>
+        <div class="type-row"><code>.t-body</code><p class="t-body">Com uma produção profundamente marcada pelo imaginário do semiárido mineiro, a artista se destaca por desenvolver uma linguagem singular.</p></div>
+        <div class="type-row"><code>.t-counter</code><p class="t-counter">1 / 4</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <header><p class="t-label">03</p><h2 class="t-section" style="margin:0">Espaço e fios</h2></header>
+      <div class="spacing">
+        <div><i style="width:4px"></i><code>--space-1 · 4px</code></div>
+        <div><i style="width:8px"></i><code>--space-2 · 8px</code></div>
+        <div><i style="width:12px"></i><code>--space-3 · 12px</code></div>
+        <div><i style="width:16px"></i><code>--space-4 · 16px</code></div>
+        <div><i style="width:24px"></i><code>--space-5 · 24px</code></div>
+        <div><i style="width:32px"></i><code>--space-6 · 32px</code></div>
+        <div><i style="width:48px"></i><code>--space-7 · 48px</code></div>
+      </div>
+      <hr class="ds-rule">
+      <p class="note">Fio <code>--rule: 2px</code> rosa separa faixas. Cantos <code>--radius: 0</code>. Área de toque mínima <code>--tap: 48px</code>.</p>
+    </section>
+
+    <section class="block">
+      <header><p class="t-label">04</p><h2 class="t-section" style="margin:0">Botões</h2></header>
+      <div class="row">
+        <button class="ds-btn ds-btn--primary" type="button"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/></svg><span>Ouvir</span></button>
+        <button class="ds-btn" type="button">Ver no site</button>
+        <button class="ds-btn" type="button" disabled>Desativado</button>
+        <button class="ds-icon-btn" type="button" aria-label="Tocar"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/></svg></button>
+        <button class="ds-icon-btn ds-icon-btn--primary" type="button" aria-label="Pausar"><svg viewBox="0 0 24 24"><path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor" stroke="none"/></svg></button>
+      </div>
+      <div style="max-width:420px; display:grid; gap:var(--space-3)">
+        <button class="ds-btn ds-btn--primary ds-btn--block" type="button"><span>Explorar com a câmera</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+        <button class="ds-btn ds-btn--block" type="button"><span>Audioguia</span></button>
+      </div>
+      <div style="background:#000; padding:var(--space-5)"><button class="ds-btn ds-btn--inverse" type="button">Sobre fundo escuro</button></div>
+    </section>
+
+    <section class="block">
+      <header><p class="t-label">05</p><h2 class="t-section" style="margin:0">Componentes</h2></header>
+      <div class="demo">
+        <div class="ds-infoblock ds-band">
+          <p class="t-label">Exposição</p>
+          <p class="t-meta">De 25 de outubro de 2024 a 2 de fevereiro de 2025</p>
+          <p class="t-meta">Entrada gratuita</p>
+        </div>
+        <ul class="ds-list" style="border-top:0">
+          <li style="padding:var(--space-3) var(--gutter); display:flex; justify-content:space-between; align-items:center"><span class="t-section">Item de lista</span><span class="ds-switch"><input type="checkbox" checked aria-label="Exemplo de interruptor"><span class="ds-switch__track"></span></span></li>
+          <li style="padding:var(--space-3) var(--gutter)"><progress class="ds-progress" max="10" value="6"></progress></li>
+        </ul>
+        <div class="ds-banner">Faixa de aviso rosa, como a do site.</div>
+      </div>
+      <div class="demo demo--dark">
+        <button class="ds-hotspot" type="button" aria-label="Exemplo de hotspot"><span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span></button>
+      </div>
+      <p class="note">Hotspot: o círculo que aparece sobre a obra reconhecida na câmera. No 3D, a moldura sobre o cartaz usa o mesmo rosa.</p>
+    </section>
+  </div>
+</body>
+</html>

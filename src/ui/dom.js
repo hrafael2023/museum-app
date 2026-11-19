@@ -18,6 +18,8 @@ export function h(tag, attrs = {}, ...children) {
 
 export const icons = {
   back: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>',
+  arrowLeft: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4M10 6l-6 6 6 6" /></svg>',
+  arrowRight: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" /></svg>',
   close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>',
   gear: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4L5.3 5.3"/></svg>',
   play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" class="fill"/></svg>',
@@ -30,5 +32,36 @@ export const icons = {
 };
 
 export function iconButton(icon, label, onclick, cls = '') {
-  return h('button', { class: `icon-btn ${cls}`, type: 'button', 'aria-label': label, title: label, onclick, html: icons[icon] });
+  return h('button', { class: `ds-icon-btn ${cls}`, type: 'button', 'aria-label': label, title: label, onclick, html: icons[icon] });
+}
+
+// Cabeçalho do design system: ação à esquerda (VOLTAR), meio livre, e à
+// direita a assinatura da instituição ou outra ação.
+export function header({ back, center, right } = {}) {
+  const left = back
+    ? h('button', { class: 'ds-header__action t-nav', type: 'button', onclick: back, html: `${icons.back}<span>Voltar</span>` })
+    : null;
+  return h('header', { class: 'ds-header' }, left, h('div', { class: 'ds-header__center' }, center ?? null), right ?? null);
+}
+
+export function headerAction(icon, label, onclick) {
+  return h('button', { class: 'ds-header__action', type: 'button', 'aria-label': label, title: label, onclick, html: icons[icon] });
+}
+
+// Assinatura tipográfica: "INSTITUTO" pequeno + nome grande, a partir do título da exposição.
+export function signature(title) {
+  const words = title.trim().split(/\s+/);
+  const small = words.length > 2 ? words.shift() : '';
+  const last = words.pop();
+  return h('span', { class: 'ds-signature', 'aria-label': title },
+    small && h('span', { class: 'ds-signature__small' }, small),
+    h('span', { class: 'ds-signature__big' }, h('span', {}, words.join(' ') + ' '), h('b', {}, last)),
+  );
+}
+
+export function marquee(words) {
+  const items = [...words, ...words, ...words, ...words];
+  const track = h('div', { class: 'ds-marquee__track', 'aria-hidden': 'true' },
+    [...items, ...items].map((w) => h('span', { class: 'ds-marquee__item' }, w)));
+  return h('div', { class: 'ds-marquee' }, track);
 }

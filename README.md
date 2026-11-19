@@ -76,12 +76,35 @@ exemplo `{ "type": "modelo", "src": "assets/models/obra.glb" }`. A camada recebe
 `anchor.group`, um grupo do three.js preso ao alvo (largura 1 = largura da
 imagem), onde é só adicionar objetos 3D. `outline.js` é um exemplo pronto.
 
-**Trocar o visual**: as cores e medidas ficam nas variáveis no topo de
-`styles/app.css`. As telas são funções independentes em `src/ui/views/`.
+**Trocar o visual**: veja a seção Design system abaixo. As telas são funções
+independentes em `src/ui/views/`.
 
 **Trocar o motor de reconhecimento** (ex.: WebXR ou um app nativo): basta uma
 classe com a mesma interface de `ImageTracker` (`start`, `stop`, `pause`,
 `resume` e os eventos `found`, `lost`, `select`).
+
+## Design system
+
+O visual segue o site do Instituto Tomie Ohtake. A referência fica em
+[design-system.html](https://hrafael2023.github.io/museum-app/design-system.html).
+
+- fundo branco e texto preto; o rosa `#EC0C6D` marca estrutura e ação (fios,
+  rótulos, bordas, botões);
+- cantos retos e faixas horizontais separadas por fios rosa de 2 px;
+- uma família tipográfica usada em várias larguras, da comprimida à expandida.
+
+Arquivos:
+- `styles/tokens.css`: cores, fontes, escala de texto, espaços, fios. Para outra
+  instituição, troque estes valores.
+- `styles/components.css`: peças reutilizáveis (cabeçalho, letreiro, botões,
+  listas, interruptor, faixa de aviso, hotspot), só com tokens.
+- `styles/app.css`: layout de cada tela.
+
+**Fonte:** o site usa a Chromatic, que é comercial. O app usa a
+[Archivo](https://github.com/Omnibus-Type/Archivo) (licença SIL OFL, em
+`assets/fonts/`), que tem eixo de largura de 62% a 125% e cobre os mesmos papéis.
+Se o Instituto ceder os arquivos da Chromatic, basta declarar os `@font-face`
+em `tokens.css`: ela está primeiro em cada pilha de fontes e passa a ser usada.
 
 ## Versão
 

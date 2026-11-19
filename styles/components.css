@@ -1,0 +1,182 @@
+/* ==========================================================================
+   Design system "Tomie" — componentes
+   Peças reutilizáveis, só com tokens (styles/tokens.css). O layout de cada
+   tela do app fica em styles/app.css.
+   ========================================================================== */
+
+/* Papéis tipográficos ------------------------------------------------------ */
+.t-nav {        /* MENU, VOLTAR: comprimida em caixa alta */
+  font-family: var(--font-compressed); font-stretch: var(--stretch-compressed);
+  font-weight: 700; font-size: var(--text-nav); line-height: var(--leading-tight);
+  text-transform: uppercase; letter-spacing: 0;
+}
+.t-title {      /* título de página: condensada, caixa alta */
+  font-family: var(--font-condensed); font-stretch: var(--stretch-condensed);
+  font-weight: 700; font-size: var(--text-title); line-height: var(--leading-tight);
+  text-transform: uppercase; letter-spacing: .03em;
+}
+.t-display {    /* capa e letreiro */
+  font-family: var(--font-condensed); font-stretch: var(--stretch-condensed);
+  font-weight: 800; font-size: var(--text-display); line-height: .9;
+  text-transform: uppercase; letter-spacing: -.005em;
+}
+.t-display--wide { font-family: var(--font-geometric); font-stretch: var(--stretch-extended); font-weight: 800; }
+.t-section {    /* título de seção: geométrica larga */
+  font-family: var(--font-geometric); font-stretch: var(--stretch-extended);
+  font-weight: 700; font-size: var(--text-section); line-height: 1.15;
+  text-transform: uppercase; letter-spacing: .03em;
+}
+.t-label {      /* rótulo: EXPOSIÇÃO, PROGRAMA PÚBLICO */
+  font-family: var(--font-gothic); font-stretch: var(--stretch-normal);
+  font-weight: 700; font-size: var(--text-label); line-height: 1.3;
+  text-transform: uppercase; letter-spacing: .02em; color: var(--color-accent);
+}
+.t-meta {       /* datas, horários */
+  font-family: var(--font-gothic); font-weight: 700; font-size: var(--text-meta);
+  line-height: 1.3; text-transform: uppercase; letter-spacing: .01em;
+}
+.t-body {
+  font-family: var(--font-grotesque); font-weight: 400;
+  font-size: var(--text-body); line-height: var(--leading-body);
+}
+.t-lead {
+  font-family: var(--font-grotesque); font-weight: 400;
+  font-size: var(--text-lead); line-height: 1.2;
+}
+.t-counter {    /* 1 / 4 */
+  font-family: var(--font-geometric); font-stretch: var(--stretch-extended);
+  font-weight: 700; font-size: 13px; color: var(--color-accent); letter-spacing: .04em;
+}
+
+/* Fios --------------------------------------------------------------------- */
+.ds-rule { border: 0; border-top: var(--rule) solid var(--color-rule); margin: 0; }
+.ds-band { border-bottom: var(--rule) solid var(--color-rule); }
+
+/* Cabeçalho: faixa branca, divisória rosa, assinatura à direita ------------ */
+.ds-header {
+  display: flex; align-items: stretch;
+  min-height: var(--header-height);
+  padding-top: var(--safe-top);
+  background: var(--color-bg); color: var(--color-ink);
+  border-top: var(--rule) solid var(--color-rule);
+  border-bottom: var(--rule) solid var(--color-rule);
+}
+.ds-header__action {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: 4px 12px 0; min-width: var(--tap);
+  border: 0; border-right: var(--rule) solid var(--color-rule);
+  background: none; color: inherit; cursor: pointer; text-decoration: none;
+}
+.ds-header__action:last-child { border-right: 0; border-left: var(--rule) solid var(--color-rule); }
+.ds-header__action svg { width: 26px; height: 26px; stroke-width: 2.2; }
+.ds-header__center { flex: 1; display: flex; align-items: center; justify-content: center; min-width: 0; padding: 0 var(--space-2); }
+.ds-header__brand { flex: 1; display: flex; align-items: center; justify-content: flex-end; padding: 0 var(--space-3); }
+
+/* Assinatura tipográfica (texto vem de data/exhibition.json) */
+.ds-signature { display: inline-flex; align-items: flex-start; gap: 3px; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+.ds-signature__small { font-family: var(--font-gothic); font-weight: 700; font-size: 8px; letter-spacing: .02em; padding-top: 2px; }
+.ds-signature__big { font-family: var(--font-compressed); font-stretch: var(--stretch-compressed); font-size: 30px; }
+.ds-signature__big b { font-weight: 800; }
+.ds-signature__big span { font-weight: 400; }
+
+/* Letreiro: texto que corre, alternando larguras -------------------------- */
+.ds-marquee {
+  overflow: hidden; white-space: nowrap;
+  border-bottom: var(--rule) solid var(--color-rule);
+  padding: 6px 0 4px;
+}
+.ds-marquee__track { display: inline-flex; animation: ds-marquee 22s linear infinite; }
+.ds-marquee__item {
+  padding-right: .35em; font-size: 34px; line-height: 1; text-transform: uppercase;
+  font-family: var(--font-condensed); font-stretch: var(--stretch-compressed); font-weight: 800;
+}
+.ds-marquee__item:nth-child(even) { font-family: var(--font-geometric); font-stretch: var(--stretch-extended); font-weight: 800; }
+@keyframes ds-marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ds-marquee__track { animation: none; } }
+
+/* Botões: retos, borda rosa, caixa alta compacta --------------------------- */
+.ds-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3);
+  min-height: var(--tap); padding: 6px 14px 4px;
+  border: var(--rule) solid var(--color-accent); border-radius: var(--radius);
+  background: var(--color-bg); color: var(--color-ink);
+  font-family: var(--font-compact); font-stretch: var(--stretch-compact);
+  font-weight: 500; font-size: var(--text-button); line-height: 1;
+  text-transform: uppercase; text-decoration: none; text-align: left;
+  cursor: pointer; transition: background var(--duration), color var(--duration);
+}
+.ds-btn svg { width: 22px; height: 22px; stroke-width: 2; }
+.ds-btn:hover { background: var(--color-accent); color: var(--color-accent-ink); }
+.ds-btn:active { background: var(--tomie-pink-dark); border-color: var(--tomie-pink-dark); color: var(--color-accent-ink); }
+.ds-btn:disabled { opacity: .45; cursor: default; background: var(--color-bg); color: var(--color-ink); }
+.ds-btn--primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.ds-btn--primary:hover { background: var(--tomie-pink-dark); border-color: var(--tomie-pink-dark); }
+.ds-btn--inverse { background: transparent; color: var(--color-inverse-ink); border-color: var(--color-inverse-ink); }
+.ds-btn--inverse:hover { background: var(--color-inverse-ink); color: var(--color-inverse-bg); }
+.ds-btn--block { width: 100%; justify-content: space-between; min-height: 60px; font-size: 26px; font-stretch: var(--stretch-condensed); padding: 8px 16px 6px; }
+.ds-btn--quiet { border-color: var(--color-ink); }
+
+/* Botão de ícone quadrado */
+.ds-icon-btn {
+  display: inline-grid; place-items: center; flex: none;
+  width: var(--tap); height: var(--tap);
+  border: var(--rule) solid var(--color-accent); border-radius: var(--radius);
+  background: var(--color-bg); color: var(--color-ink); cursor: pointer;
+}
+.ds-icon-btn:hover { background: var(--color-accent); color: var(--color-accent-ink); }
+.ds-icon-btn--primary { background: var(--color-accent); color: var(--color-accent-ink); }
+.ds-icon-btn--bare { border-color: transparent; background: transparent; }
+
+/* Bloco de informações centralizado (como no topo das páginas do site) ----- */
+.ds-infoblock { text-align: center; padding: var(--space-5) var(--gutter); display: grid; gap: 2px; }
+
+/* Lista com fios rosa ------------------------------------------------------ */
+.ds-list { list-style: none; margin: 0; padding: 0; border-top: var(--rule) solid var(--color-rule); }
+.ds-list > li { border-bottom: var(--rule) solid var(--color-rule); }
+
+/* Faixa de aviso rosa (como o aviso de cookies do site) -------------------- */
+.ds-banner {
+  background: var(--color-accent); color: var(--color-accent-ink);
+  padding: var(--space-4) var(--gutter); text-align: center;
+  font-family: var(--font-geometric); font-size: var(--text-small);
+}
+
+/* Interruptor quadrado ----------------------------------------------------- */
+.ds-switch { position: relative; width: 56px; height: 30px; flex: none; }
+.ds-switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; z-index: 1; }
+.ds-switch__track { position: absolute; inset: 0; border: var(--rule) solid var(--color-accent); background: var(--color-bg); transition: background var(--duration); }
+.ds-switch__track::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+  background: var(--color-accent); transition: transform var(--duration) var(--ease), background var(--duration);
+}
+.ds-switch input:checked + .ds-switch__track { background: var(--color-accent); }
+.ds-switch input:checked + .ds-switch__track::after { transform: translateX(26px); background: var(--color-accent-ink); }
+.ds-switch input:focus-visible + .ds-switch__track { outline: 2px solid var(--color-ink); outline-offset: 2px; }
+
+/* Barra de progresso ------------------------------------------------------- */
+.ds-progress { appearance: none; width: 100%; height: 8px; border: var(--rule) solid var(--color-accent); background: var(--color-bg); }
+.ds-progress::-webkit-progress-bar { background: var(--color-bg); }
+.ds-progress::-webkit-progress-value { background: var(--color-accent); }
+.ds-progress::-moz-progress-bar { background: var(--color-accent); }
+
+/* Hotspot: o círculo clicável sobre a câmera ------------------------------- */
+.ds-hotspot {
+  position: absolute; left: 0; top: 0;
+  width: 72px; height: 72px; margin: -36px 0 0 -36px;
+  border: 0; padding: 0; background: transparent; cursor: pointer;
+}
+.ds-hotspot__ring {
+  position: absolute; inset: 8px; border-radius: 50%;
+  border: 3px solid var(--tomie-pink);
+  animation: ds-hotspot 1.6s var(--ease) infinite;
+}
+.ds-hotspot__dot {
+  position: absolute; inset: 20px; border-radius: 50%;
+  background: var(--tomie-pink); border: 4px solid var(--tomie-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+}
+@keyframes ds-hotspot {
+  0% { transform: scale(.75); opacity: 1; }
+  80%, 100% { transform: scale(1.45); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .ds-hotspot__ring { animation: none; } }

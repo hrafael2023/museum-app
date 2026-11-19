@@ -1,4 +1,4 @@
-import { h, icons, iconButton } from '../dom.js';
+import { h, icons, iconButton, header, headerAction } from '../dom.js';
 import { go } from '../router.js';
 import { getExhibition, getItems } from '../../content/repository.js';
 import { ImageTracker } from '../../ar/tracker.js';
@@ -16,7 +16,7 @@ export function cameraView(root, { query }) {
 
   const arContainer = h('div', { class: 'camera__ar' });
   const overlayLayer = h('div', { class: 'camera__overlays' });
-  const hint = h('p', { class: 'camera__hint' }, 'Preparando a câmera…');
+  const hint = h('p', { class: 'camera__hint t-meta' }, 'Preparando a câmera…');
   const player = h('div', { class: 'player', hidden: true });
 
   const modeSwitch = h('div', { class: 'segmented', role: 'radiogroup', 'aria-label': 'Modo' });
@@ -24,7 +24,7 @@ export function cameraView(root, { query }) {
     ['ver', 'Ver'],
     ['audio', 'Ouvir'],
   ].map(([value, label]) => {
-    const b = h('button', { type: 'button', role: 'radio', onclick: () => setMode(value) }, label);
+    const b = h('button', { class: 't-nav', type: 'button', role: 'radio', onclick: () => setMode(value) }, label);
     b.dataset.value = value;
     modeSwitch.append(b);
     return b;
@@ -33,11 +33,7 @@ export function cameraView(root, { query }) {
   const el = h('main', { class: 'camera' },
     arContainer,
     overlayLayer,
-    h('div', { class: 'topbar topbar--dark' },
-      iconButton('back', 'Voltar', () => go('')),
-      audioOn ? modeSwitch : h('span'),
-      iconButton('gear', 'Ajustes', () => go('ajustes')),
-    ),
+    header({ back: () => go(''), center: audioOn ? modeSwitch : null, right: headerAction('gear', 'Ajustes', () => go('ajustes')) }),
     hint,
     player,
   );
@@ -80,11 +76,11 @@ export function cameraView(root, { query }) {
     player.hidden = false;
     player.replaceChildren(
       h('button', { class: 'player__info', type: 'button', onclick: () => openItem(item) },
-        h('span', { class: 'eyebrow' }, status === 'playing' ? 'Tocando' : 'Pausado'),
-        h('strong', {}, item.title),
+        h('span', { class: 't-label' }, status === 'playing' ? 'Tocando' : 'Pausado'),
+        h('strong', { class: 'player__title' }, item.title),
       ),
       iconButton(status === 'playing' ? 'pause' : 'play', status === 'playing' ? 'Pausar' : 'Continuar',
-        () => (status === 'playing' ? narrator.pause() : narrator.resume()), 'icon-btn--solid'),
+        () => (status === 'playing' ? narrator.pause() : narrator.resume()), 'ds-icon-btn--primary'),
       iconButton('stop', 'Parar', () => narrator.stop()),
     );
   }

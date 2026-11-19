@@ -1,4 +1,4 @@
-import { h, iconButton } from '../dom.js';
+import { h, header } from '../dom.js';
 import { getItem } from '../../content/repository.js';
 
 // Página de um item (#/item/<id>): usada pela lista do audioguia e por links diretos.
@@ -13,9 +13,7 @@ export function itemView(root, { params }) {
   const content = renderContent(item);
   root.append(
     h('div', { class: 'page' },
-      h('div', { class: 'topbar topbar--light topbar--sticky' },
-        iconButton('back', 'Voltar', () => (history.length > 1 ? history.back() : (location.hash = '#/'))),
-      ),
+      header({ back: () => (history.length > 1 ? history.back() : (location.hash = '#/')) }),
       content.el,
     ),
   );

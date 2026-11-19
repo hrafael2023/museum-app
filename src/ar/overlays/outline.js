@@ -11,7 +11,7 @@ export function createOutline(config, { THREE, anchor, item }) {
   shape.lineTo(-w / 2, h / 2);
   shape.lineTo(-w / 2, -h / 2);
   const inner = new THREE.Path();
-  const t = 0.012;
+  const t = 0.018;
   inner.moveTo(-w / 2 + t, -h / 2 + t);
   inner.lineTo(-w / 2 + t, h / 2 - t);
   inner.lineTo(w / 2 - t, h / 2 - t);
@@ -20,7 +20,7 @@ export function createOutline(config, { THREE, anchor, item }) {
   shape.holes.push(inner);
 
   const material = new THREE.MeshBasicMaterial({
-    color: config.color ?? 0xffffff,
+    color: config.color ?? 0xec0c6d, // rosa Tomie (--tomie-pink)
     transparent: true,
     opacity: 0,
     depthTest: false,

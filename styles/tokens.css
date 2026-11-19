@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Design system "Tomie" — tokens
+   Baseado no site do Instituto Tomie Ohtake (institutotomieohtake.org.br).
+   Veja design-system.html para a referência visual de cada token.
+
+   Tudo que é identidade visual mora aqui. Para outra exposição ou instituição,
+   troque estes valores e o resto do app acompanha.
+   ========================================================================== */
+
+/* Archivo: fonte livre (SIL OFL) com eixo de largura de 62% a 125%, usada no
+   lugar da família Chromatic do site, que é comercial. Se o Instituto ceder os
+   arquivos da Chromatic, basta declarar os @font-face dela: ela vem primeiro
+   em cada pilha de fontes abaixo e passa a ser usada automaticamente. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../assets/fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../assets/fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* Cor ------------------------------------------------------------------ */
+  --tomie-pink: #ec0c6d;        /* acento: fios, rótulos, bordas, destaques */
+  --tomie-pink-dark: #c20058;   /* rosa pressionado / texto rosa pequeno */
+  --tomie-black: #000000;
+  --tomie-white: #ffffff;
+  --tomie-gray: #c7c7c7;        /* textos secundários sobre preto, desativado */
+  --tomie-gray-ink: #5c5c5c;    /* textos secundários sobre branco */
+
+  --color-bg: var(--tomie-white);
+  --color-ink: var(--tomie-black);
+  --color-muted: var(--tomie-gray-ink);
+  --color-accent: var(--tomie-pink);
+  --color-accent-ink: var(--tomie-white);
+  --color-rule: var(--tomie-pink);
+  --color-inverse-bg: var(--tomie-black);
+  --color-inverse-ink: var(--tomie-white);
+
+  /* Tipografia: uma família, várias larguras (como a Chromatic) ------------ */
+  --font-compressed: "ChromaticCompressed", "Archivo", "Arial Narrow", sans-serif;
+  --font-condensed: "ChromaticCondensed", "Archivo", "Arial Narrow", sans-serif;
+  --font-compact: "ChromaticCompact", "Archivo", "Arial Narrow", sans-serif;
+  --font-gothic: "ChromaticGothic", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-grotesque: "ChromaticGrotesque", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-geometric: "ChromaticGeometric", "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  --stretch-compressed: 62%;
+  --stretch-condensed: 72%;
+  --stretch-compact: 85%;
+  --stretch-normal: 100%;
+  --stretch-extended: 125%;
+
+  /* Escala (mobile primeiro; cresce em telas largas) */
+  --text-label: 12px;      /* rótulo rosa: EXPOSIÇÃO */
+  --text-meta: 14px;       /* datas e informações em caixa alta */
+  --text-small: 15px;
+  --text-body: 18px;       /* texto corrido */
+  --text-lead: 22px;
+  --text-section: 16px;    /* título de seção, geométrica larga */
+  --text-button: 22px;     /* botão, compacta em caixa alta */
+  --text-nav: 30px;        /* MENU, comprimida */
+  --text-title: 40px;      /* título de página, condensada */
+  --text-display: 76px;    /* letreiro e capa */
+
+  --leading-tight: 1;
+  --leading-snug: 1.15;
+  --leading-body: 1.3;
+
+  /* Espaço, fios e forma -------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --gutter: 16px;
+  --rule: 2px;             /* espessura dos fios rosa */
+  --radius: 0;             /* cantos retos em tudo */
+  --header-height: 52px;
+  --tap: 48px;             /* área mínima de toque */
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --duration: .22s;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (min-width: 760px) {
+  :root {
+    --text-body: 20px;
+    --text-title: 56px;
+    --text-display: 120px;
+    --gutter: 24px;
+  }
+}
