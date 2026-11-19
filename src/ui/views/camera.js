@@ -19,22 +19,6 @@ export function cameraView(root, { query }) {
   const hint = h('p', { class: 'camera__hint t-meta' }, 'Preparando a câmera…');
   const player = h('div', { class: 'player', hidden: true });
 
-  // Marcador fixo no centro da tela: aparece quando um cartaz é reconhecido e
-  // não acompanha o movimento da câmera (fica estável para tocar).
-  const markerButton = h('button', {
-    class: 'ds-hotspot camera__marker-btn', type: 'button',
-    html: '<span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span>'
-      + '<span class="ds-hotspot__eq" aria-hidden="true"><i></i><i></i><i></i></span>',
-    onclick: () => {
-      const item = current && getItem(current);
-      if (!item) return;
-      if (mode === 'audio') narrator.toggle(item);
-      else openItem(item);
-    },
-  });
-  const markerTitle = h('span', { class: 'camera__marker-title t-meta' });
-  const marker = h('div', { class: 'camera__marker', hidden: true }, markerButton, markerTitle);
-
   const modeSwitch = h('div', { class: 'segmented', role: 'radiogroup', 'aria-label': 'Modo' });
   const modeButtons = [
     ['ver', 'Ver'],
@@ -49,7 +33,6 @@ export function cameraView(root, { query }) {
   const el = h('main', { class: 'camera' },
     arContainer,
     overlayLayer,
-    marker,
     header({ back: () => go(''), center: audioOn ? modeSwitch : null, right: headerAction('gear', 'Ajustes', () => go('ajustes')) }),
     hint,
     player,
@@ -70,20 +53,9 @@ export function cameraView(root, { query }) {
   }
 
   const visible = new Map(); // id -> item dos cartazes na câmera agora
-  let current = null;        // id do cartaz que o marcador representa
-  const lostTimers = new Map();
-  const GRACE_MS = 800;      // perdas curtas (tremida, reflexo) não somem com o marcador
-
-  function setCurrent(id) {
-    current = id;
-    marker.hidden = !current;
-    markerTitle.textContent = current ? getItem(current)?.title ?? '' : '';
-    paintHotspots();
-    updateHint();
-  }
   function updateHint() {
     if (!tracker.running) return;
-    if (current) {
+    if (visible.size) {
       hint.textContent = mode === 'audio' ? 'Toque no ícone para ouvir' : 'Toque no círculo para abrir';
     } else {
       hint.textContent = mode === 'audio'
@@ -93,13 +65,11 @@ export function cameraView(root, { query }) {
     hint.hidden = !hint.textContent;
   }
 
-  // Desenha o marcador (e eventuais círculos presos aos cartazes) conforme o
-  // modo e o áudio: no modo Ouvir vira um ícone de som parado; se o áudio
-  // daquele cartaz está tocando, fica animado.
+  // Desenha os círculos conforme o modo e o áudio: no modo Ouvir todos viram
+  // ícones de som parados; o do cartaz que está tocando fica animado.
   function paintHotspots() {
     const { status, item } = narrator;
-    markerButton.dataset.item = current ?? '';
-    for (const b of [markerButton, ...overlayLayer.querySelectorAll('.ds-hotspot')]) {
+    for (const b of overlayLayer.querySelectorAll('.ds-hotspot')) {
       const on = !!item && status !== 'stopped' && b.dataset.item === item.id;
       const title = getItem(b.dataset.item)?.title ?? '';
       b.classList.toggle('ds-hotspot--audio', mode === 'audio');
@@ -147,30 +117,20 @@ export function cameraView(root, { query }) {
     overlayLayer,
     targetsSrc: ex.ar.targets,
     items: getItems(),
-    maxTrack: ex.ar.maxTrack ?? 1,
+    // Todos os cartazes que estiverem na câmera ao mesmo tempo ganham um círculo.
+    maxTrack: ex.ar.maxTrack ?? getItems().length,
   });
 
   window.museumDebug = { tracker }; // facilita a inspeção pelo console
 
   tracker.on('found', ({ item }) => {
-    clearTimeout(lostTimers.get(item.id));
-    lostTimers.delete(item.id);
-    const isNew = !visible.has(item.id);
     visible.set(item.id, item);
-    if (!current) {
-      navigator.vibrate?.(30);
-      setCurrent(item.id);
-    } else if (isNew) updateHint();
+    navigator.vibrate?.(30);
+    updateHint();
   });
   tracker.on('lost', ({ item }) => {
-    // Espera um pouco antes de tirar o marcador: se o cartaz voltar logo, nada muda.
-    clearTimeout(lostTimers.get(item.id));
-    lostTimers.set(item.id, setTimeout(() => {
-      lostTimers.delete(item.id);
-      visible.delete(item.id);
-      if (current === item.id) setCurrent([...visible.keys()].pop() ?? null);
-      else updateHint();
-    }, closeSheet ? 0 : GRACE_MS));
+    visible.delete(item.id);
+    updateHint();
   });
   // Tocar no círculo: no modo Ver abre o conteúdo; no Ouvir, toca ou pausa o áudio.
   tracker.on('select', ({ item }) => (mode === 'audio' ? narrator.toggle(item) : openItem(item)));
@@ -189,7 +149,6 @@ export function cameraView(root, { query }) {
 
   return () => {
     closeSheet?.();
-    lostTimers.forEach(clearTimeout);
     offNarrator();
     narrator.stop();
     tracker.stop();

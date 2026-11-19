@@ -5,8 +5,7 @@
   "marquee": "Matéria Impressa",
   "language": "pt-BR",
   "ar": {
-    "targets": "assets/targets/targets.mind",
-    "maxTrack": 2
+    "targets": "assets/targets/targets.mind"
   },
   "items": [
     {
@@ -59,7 +58,11 @@
         "image": "assets/targets/iole-de-freitas.jpg",
         "aspect": 1.411
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": "assets/audio/iole-de-freitas.mp3"
       }
@@ -112,7 +115,11 @@
         "image": "assets/targets/roda-dos-bichos.jpg",
         "aspect": 1.486
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": "assets/audio/roda-dos-bichos.mp3"
       }
@@ -176,7 +183,11 @@
         "image": "assets/targets/mira-schendel.jpg",
         "aspect": 1.494
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": "assets/audio/mira-schendel.mp3"
       }
@@ -243,7 +254,11 @@
         "image": "assets/targets/poesia-em-presenca.jpg",
         "aspect": 1.443
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -296,7 +311,11 @@
         "image": "assets/targets/museu-das-origens.jpg",
         "aspect": 1.506
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -342,7 +361,11 @@
         "image": "assets/targets/chen-kong-fang.jpg",
         "aspect": 1.419
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -407,7 +430,11 @@
         "image": "assets/targets/montanha-e-vale.jpg",
         "aspect": 1.461
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -455,7 +482,11 @@
         "image": "assets/targets/contrarregra.jpg",
         "aspect": 1.407
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -509,7 +540,11 @@
         "image": "assets/targets/olho-dagua.jpg",
         "aspect": 1.489
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -563,7 +598,11 @@
         "image": "assets/targets/aguas-subterraneas.jpg",
         "aspect": 1.48
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }
@@ -638,7 +677,11 @@
         "image": "assets/targets/hiromi-nagakura.jpg",
         "aspect": 1.391
       },
-      "overlays": [],
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
       "audio": {
         "src": null
       }

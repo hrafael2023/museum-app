@@ -85,9 +85,10 @@ Para mudar só o texto narrado, use `"audio": { "script": "..." }`. Também dá
 para pôr uma gravação feita por uma pessoa em `assets/audio/` e apontar `src` para ela.
 Sem arquivo, o app lê o texto com a voz do aparelho.
 
-**Marcador**: quando um cartaz é reconhecido, um círculo fixo aparece no centro da
-tela, com o título do cartaz; ele não acompanha o movimento da câmera. Para um
-círculo preso ao cartaz, use a camada `{ "type": "hotspot" }` no item.
+**Marcador**: cada cartaz reconhecido ganha um círculo sobre ele, quantos
+estiverem na câmera. O círculo é estabilizado: ignora tremidas e só muda de
+lugar quando o cartaz se desloca de verdade na tela; perdas curtas de
+reconhecimento não o fazem sumir. Ajuste em `{ "type": "hotspot", "deadZone": 0.12, "graceMs": 800 }`.
 
 **Elementos 3D sobre a câmera**: cada item lista suas camadas em `"overlays"`.
 Para um novo tipo (modelo 3D, vídeo, animação), crie um arquivo em
