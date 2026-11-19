@@ -131,8 +131,8 @@ export function cameraView(root, { query }) {
   };
   document.addEventListener('visibilitychange', onVisibility);
 
-  // Modo de diagnóstico: ?debug=1 no endereço mostra os números de desempenho.
-  const debugOn = new URLSearchParams(location.search).has('debug') || query.has('debug');
+  // Modo de diagnóstico: ligado em Ajustes > Debug, mostra os números de desempenho.
+  const debugOn = settings.get('debug');
   let debugTimer = null;
   if (debugOn) {
     const panel = h('pre', { class: 'camera__debug', 'aria-hidden': 'true' });

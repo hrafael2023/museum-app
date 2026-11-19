@@ -16,7 +16,8 @@ Teste com 11 cartazes do Instituto Tomie Ohtake.
 - **Audioguia**: aponte a câmera e, sobre o cartaz reconhecido, aparece um ícone
   de som. Toque nele para ouvir; enquanto toca, o ícone fica animado, e tocar de
   novo pausa. Também dá para escolher o conteúdo numa lista e só ouvir.
-- **Ajustes**: liga e desliga o áudio e baixa o conteúdo para usar sem internet.
+- **Ajustes**: liga e desliga o áudio, baixa o conteúdo para usar sem internet e
+  liga o painel de diagnóstico de desempenho (Debug).
 
 Funciona no navegador do celular (Safari no iPhone, Chrome no Android), sem
 instalar nada. Também pode ser adicionado à tela inicial.
@@ -107,8 +108,8 @@ reconhecimento. Por isso:
 - sem cartaz na câmera por 8 s, o rastreador analisa menos quadros;
 - com o app em segundo plano ou um conteúdo aberto, a câmera para de processar.
 
-Para medir num celular, abra a câmera com `?debug=1`, por exemplo
-https://hrafael2023.github.io/museum-app/?debug=1#/camera : um painel mostra
+Para medir num celular, ligue **Ajustes > Debug** (vem desligado) e abra a
+câmera: um painel mostra
 quadros por segundo, análises por segundo, cartazes rastreados, o limite atual,
 o tamanho do catálogo e a memória. Se o acervo passar de uns 30 a 40 cartazes,
 o próximo passo é dividir o catálogo por sala (um `targets.mind` por sala).

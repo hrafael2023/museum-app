@@ -82,7 +82,7 @@ svg .fill { fill: currentColor; stroke: none; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
-/* Modo de diagnóstico (?debug=1) */
+/* Modo de diagnóstico (Ajustes > Debug) */
 .camera__debug {
   position: absolute; left: var(--space-2); right: var(--space-2);
   top: calc(var(--safe-top) + var(--header-height) + var(--space-2)); z-index: 4;

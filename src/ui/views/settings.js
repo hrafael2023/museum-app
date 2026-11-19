@@ -17,6 +17,15 @@ export function settingsView(root) {
     },
   });
 
+  // Debug: painel de diagnóstico na câmera
+  const debugToggle = h('input', {
+    type: 'checkbox',
+    role: 'switch',
+    id: 'set-debug',
+    checked: settings.get('debug'),
+    onchange: (e) => settings.set('debug', e.target.checked),
+  });
+
   // Download offline
   const offlineStatus = h('p', { class: 't-body setting__hint' }, 'Verificando…');
   const progress = h('progress', { class: 'ds-progress', max: '1', value: '0', hidden: true });
@@ -37,7 +46,7 @@ export function settingsView(root) {
     } else {
       offlineStatus.textContent = st.missing < st.total
         ? 'Download incompleto. Baixe de novo para usar sem internet.'
-        : 'Baixe antes da visita para usar em lugares sem conexão (cerca de 10 MB).';
+        : 'Baixe antes da visita para usar em lugares sem conexão (cerca de 20 MB).';
       downloadBtn.querySelector('span').textContent = 'Baixar conteúdo';
       removeBtn.hidden = true;
     }
@@ -89,6 +98,15 @@ export function settingsView(root) {
         offlineStatus,
         progress,
         h('div', { class: 'setting__actions' }, downloadBtn, removeBtn),
+      ),
+      h('section', { class: 'setting ds-band' },
+        h('div', { class: 'setting__row' },
+          h('label', { for: 'set-debug', class: 'setting__label' },
+            h('span', { class: 't-section' }, 'Debug'),
+            h('span', { class: 't-body setting__hint' }, 'Mostra na câmera um painel com o desempenho: quadros e análises por segundo, cartazes rastreados, limite simultâneo e memória.'),
+          ),
+          h('span', { class: 'ds-switch' }, debugToggle, h('span', { class: 'ds-switch__track', 'aria-hidden': 'true' })),
+        ),
       ),
       h('p', { class: 't-meta settings__version' }, `Museum App · v${VERSION}`),
     ),

@@ -14,7 +14,7 @@ import { createOverlays } from './overlays/index.js';
 // sozinho: cai se as análises por segundo ficarem baixas e sobe se sobrar
 // folga, até `maxTrack`. Sem cartaz na câmera por alguns segundos, o
 // rastreador analisa menos quadros (economiza bateria). `stats` traz os
-// números para o modo de diagnóstico (?debug=1).
+// números para o modo de diagnóstico (Ajustes > Debug).
 //
 // A implementação usa MindAR (reconhecimento de imagens no navegador) e three.js
 // (camada 3D). Para trocar de motor (ex.: WebXR, 8th Wall), basta outra classe

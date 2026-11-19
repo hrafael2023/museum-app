@@ -4,6 +4,7 @@ import { bus } from './events.js';
 const KEY = 'museum-app:settings';
 const DEFAULTS = {
   audio: true,        // narração habilitada
+  debug: false,       // painel de diagnóstico de desempenho na câmera
 };
 
 function load() {
