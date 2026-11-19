@@ -55265,7 +55265,7 @@ class QQ {
   }
   async _trackAndUpdate(t, e, s) {
     const { worldCoords: o, screenCoords: r } = this.tracker.track(t, e, s);
-    return o.length < 4 ? null : await this._workerTrackUpdate(e, { worldCoords: o, screenCoords: r });
+    return o.length < (this.minTrackPoints ?? 4) ? null : await this._workerTrackUpdate(e, { worldCoords: o, screenCoords: r }); /* museum-app: minTrackPoints configurável */
   }
   processVideo(t) {
     if (this.processingVideo)

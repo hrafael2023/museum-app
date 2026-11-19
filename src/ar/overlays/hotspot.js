@@ -18,13 +18,17 @@ export function createHotspot(config, { THREE, anchor, item, camera, layer, sele
   const local = new THREE.Vector3(config.x ?? 0, config.y ?? 0, 0);
   const point = new THREE.Vector3();
 
+  let active = false;
   return {
-    show() { button.hidden = false; },
-    hide() { button.hidden = true; },
+    show() { active = true; },
+    hide() { active = false; button.hidden = true; },
     update(dt, { width, height }) {
       point.copy(local).applyMatrix4(anchor.group.matrixWorld).project(camera);
       const x = (point.x * 0.5 + 0.5) * width;
       const y = (-point.y * 0.5 + 0.5) * height;
+      // Só aparece com o centro do alvo dentro da tela.
+      const onScreen = x >= 0 && x <= width && y >= 0 && y <= height;
+      button.hidden = !(active && onScreen);
       button.style.transform = `translate(${x}px, ${y}px)`;
     },
     dispose() { button.remove(); },

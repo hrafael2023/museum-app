@@ -60,9 +60,6 @@
       },
       "overlays": [
         {
-          "type": "outline"
-        },
-        {
           "type": "hotspot"
         }
       ],
@@ -119,9 +116,6 @@
         "aspect": 1.486
       },
       "overlays": [
-        {
-          "type": "outline"
-        },
         {
           "type": "hotspot"
         }
@@ -190,9 +184,6 @@
         "aspect": 1.494
       },
       "overlays": [
-        {
-          "type": "outline"
-        },
         {
           "type": "hotspot"
         }
@@ -265,9 +256,6 @@
       },
       "overlays": [
         {
-          "type": "outline"
-        },
-        {
           "type": "hotspot"
         }
       ],
@@ -325,9 +313,6 @@
       },
       "overlays": [
         {
-          "type": "outline"
-        },
-        {
           "type": "hotspot"
         }
       ],
@@ -377,9 +362,6 @@
         "aspect": 1.419
       },
       "overlays": [
-        {
-          "type": "outline"
-        },
         {
           "type": "hotspot"
         }

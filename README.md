@@ -12,7 +12,7 @@ Primeiro teste: 6 cartazes do Instituto Tomie Ohtake.
 ## Como usar
 
 - **Explorar com a câmera**: aponte para um cartaz. Quando ele é reconhecido,
-  aparece uma moldura e um círculo pulsando. Toque no círculo para abrir o conteúdo.
+  aparece um círculo rosa pulsando no centro. Toque no círculo para abrir o conteúdo.
 - **Audioguia**: aponte a câmera e o áudio do cartaz começa sozinho, sem precisar
   tocar na tela. Também dá para escolher o conteúdo numa lista e só ouvir.
 - **Ajustes**: liga e desliga o áudio e baixa o conteúdo para usar sem internet.
@@ -74,7 +74,8 @@ Para um novo tipo (modelo 3D, vídeo, animação), crie um arquivo em
 `src/ar/overlays/`, registre em `src/ar/overlays/index.js` e use no item, por
 exemplo `{ "type": "modelo", "src": "assets/models/obra.glb" }`. A camada recebe
 `anchor.group`, um grupo do three.js preso ao alvo (largura 1 = largura da
-imagem), onde é só adicionar objetos 3D. `outline.js` é um exemplo pronto.
+imagem), onde é só adicionar objetos 3D. `outline.js` (uma moldura 3D sobre o
+alvo, hoje desligada) é um exemplo pronto: use `{ "type": "outline" }`.
 
 **Trocar o visual**: veja a seção Design system abaixo. As telas são funções
 independentes em `src/ui/views/`.
