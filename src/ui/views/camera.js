@@ -5,6 +5,7 @@ import { ImageTracker } from '../../ar/tracker.js';
 import { narrator } from '../../audio/narrator.js';
 import { settings } from '../../core/settings.js';
 import { openSheet } from '../content.js';
+import { VERSION } from '../../core/version.js';
 
 // Tela da câmera. Dois modos:
 //  - "ver":   um círculo aparece sobre o cartaz reconhecido; tocar abre o conteúdo.
@@ -123,6 +124,41 @@ export function cameraView(root, { query }) {
 
   window.museumDebug = { tracker }; // facilita a inspeção pelo console
 
+  // App em segundo plano (troca de app, tela bloqueada): para de processar.
+  const onVisibility = () => {
+    if (document.hidden) tracker.pause();
+    else if (!closeSheet) tracker.resume();
+  };
+  document.addEventListener('visibilitychange', onVisibility);
+
+  // Modo de diagnóstico: ?debug=1 no endereço mostra os números de desempenho.
+  const debugOn = new URLSearchParams(location.search).has('debug') || query.has('debug');
+  let debugTimer = null;
+  if (debugOn) {
+    const panel = h('pre', { class: 'camera__debug', 'aria-hidden': 'true' });
+    el.append(panel);
+    const mb = (bytes) => `${(bytes / 1048576).toFixed(1)} MB`;
+    const targetsSize = () => {
+      const entry = performance.getEntriesByType('resource').find((e) => e.name.includes('.mind'));
+      return entry && (entry.decodedBodySize || entry.encodedBodySize) ? mb(entry.decodedBodySize || entry.encodedBodySize) : 'n/d';
+    };
+    debugTimer = setInterval(() => {
+      const s = tracker.stats;
+      const memory = performance.memory ? mb(performance.memory.usedJSHeapSize) : 'n/d (Safari não informa)';
+      panel.textContent = [
+        `Quadros na tela:   ${s.renderFps}/s`,
+        `Análises:          ${s.analysesPerSec}/s (${s.msPerAnalysis} ms cada)`,
+        `Rastreando:        ${s.tracking} cartaz(es)`,
+        `Limite simultâneo: ${s.limit} (máximo ${s.ceiling})`,
+        `Economia:          ${s.saving ? 'ligada (sem cartaz)' : 'desligada'}`,
+        `Catálogo:          ${getItems().length} cartazes, ${targetsSize()}`,
+        `Memória JS:        ${memory}`,
+        `Aparelho:          ${navigator.hardwareConcurrency || '?'} núcleos, ${navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'memória n/d'}`,
+        `Versão:            ${VERSION}`,
+      ].join('\n');
+    }, 500);
+  }
+
   tracker.on('found', ({ item }) => {
     visible.set(item.id, item);
     navigator.vibrate?.(30);
@@ -149,6 +185,8 @@ export function cameraView(root, { query }) {
 
   return () => {
     closeSheet?.();
+    clearInterval(debugTimer);
+    document.removeEventListener('visibilitychange', onVisibility);
     offNarrator();
     narrator.stop();
     tracker.stop();

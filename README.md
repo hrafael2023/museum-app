@@ -98,6 +98,21 @@ exemplo `{ "type": "modelo", "src": "assets/models/obra.glb" }`. A camada recebe
 imagem), onde é só adicionar objetos 3D. `outline.js` (uma moldura 3D sobre o
 alvo, hoje desligada) é um exemplo pronto: use `{ "type": "outline" }`.
 
+**Desempenho**: cada cartaz rastreado ao mesmo tempo pesa em cada quadro da
+câmera, e cada cartaz no catálogo aumenta o `targets.mind` e o tempo de
+reconhecimento. Por isso:
+- o limite de cartazes simultâneos começa conforme o aparelho (3, 4 ou 6) e se
+  ajusta sozinho: cai se as análises ficarem abaixo de 10 por segundo e sobe se
+  passarem de 20, até `ar.maxTrack` (padrão: todos os itens);
+- sem cartaz na câmera por 8 s, o rastreador analisa menos quadros;
+- com o app em segundo plano ou um conteúdo aberto, a câmera para de processar.
+
+Para medir num celular, abra a câmera com `?debug=1`, por exemplo
+https://hrafael2023.github.io/museum-app/?debug=1#/camera : um painel mostra
+quadros por segundo, análises por segundo, cartazes rastreados, o limite atual,
+o tamanho do catálogo e a memória. Se o acervo passar de uns 30 a 40 cartazes,
+o próximo passo é dividir o catálogo por sala (um `targets.mind` por sala).
+
 **Trocar o visual**: veja a seção Design system abaixo. As telas são funções
 independentes em `src/ui/views/`.
 

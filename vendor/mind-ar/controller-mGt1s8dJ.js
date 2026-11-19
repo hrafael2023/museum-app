@@ -55305,7 +55305,7 @@ class QQ {
             t.width === this.inputHeight && t.height === this.inputWidth && (l = this.getRotatedZ90Matrix(l)), this.onUpdate && this.onUpdate({ type: "updateMatrix", targetIndex: r, worldMatrix: l });
           }
         }
-        s.dispose(), this.onUpdate && this.onUpdate({ type: "processDone" }), await rd.nextFrame();
+        s.dispose(), this.onUpdate && this.onUpdate({ type: "processDone" }), await rd.nextFrame(), this.idleDelay && await new Promise((w) => setTimeout(w, this.idleDelay)); /* museum-app: pausa entre análises sem cartaz na tela */
       }
     })();
   }

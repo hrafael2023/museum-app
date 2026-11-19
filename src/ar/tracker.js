@@ -9,6 +9,13 @@ import { createOverlays } from './overlays/index.js';
 //   'lost'   { item }  o alvo saiu da câmera
 //   'select' { item }  o visitante tocou no hotspot do alvo
 //
+// Desempenho: rastrear muitos cartazes ao mesmo tempo pesa em cada quadro.
+// O limite de cartazes simultâneos começa conforme o aparelho e se ajusta
+// sozinho: cai se as análises por segundo ficarem baixas e sobe se sobrar
+// folga, até `maxTrack`. Sem cartaz na câmera por alguns segundos, o
+// rastreador analisa menos quadros (economiza bateria). `stats` traz os
+// números para o modo de diagnóstico (?debug=1).
+//
 // A implementação usa MindAR (reconhecimento de imagens no navegador) e three.js
 // (camada 3D). Para trocar de motor (ex.: WebXR, 8th Wall), basta outra classe
 // com a mesma interface: start(), stop(), pause(), resume() e os eventos acima.
@@ -25,6 +32,13 @@ export class ImageTracker extends Emitter {
     this.entries = []; // { item, anchor, overlays, visible }
     this.running = false;
     this.paused = false;
+    this.ceiling = Math.max(1, maxTrack); // teto do limite adaptativo
+    this.limit = Math.min(this.ceiling, deviceLimit());
+    this.stats = {
+      renderFps: 0, analysesPerSec: 0, msPerAnalysis: 0,
+      tracking: 0, limit: this.limit, ceiling: this.ceiling, saving: false,
+    };
+    this.perf = { frames: 0, loops: 0, loopMs: 0, last: 0, slow: 0, fast: 0, idleSince: 0, timer: null };
   }
 
   async start() {
@@ -35,7 +49,7 @@ export class ImageTracker extends Emitter {
     this.mindar = new MindARThree({
       container: this.container,
       imageTargetSrc: this.targetsSrc,
-      maxTrack: this.maxTrack,
+      maxTrack: this.limit,
       uiLoading: 'no',
       uiScanning: 'no',
       uiError: 'no',
@@ -74,6 +88,7 @@ export class ImageTracker extends Emitter {
           return;
         }
         entry.visible = true;
+        entry.foundAt = performance.now();
         entry.overlays.forEach((o) => o.show?.());
         this.emit('found', { item });
       };
@@ -91,10 +106,12 @@ export class ImageTracker extends Emitter {
     // às vezes mantinha o alvo "preso" na textura ao redor.
     this.mindar.controller.minTrackPoints = this.minTrackPoints;
     this.running = true;
+    this.#watchPerformance();
 
     const clock = new THREE.Clock();
     renderer.setAnimationLoop(() => {
       const dt = clock.getDelta();
+      this.perf.frames += 1;
       const size = { width: this.container.clientWidth, height: this.container.clientHeight };
       for (const entry of this.entries) {
         if (!entry.visible) continue;
@@ -109,6 +126,72 @@ export class ImageTracker extends Emitter {
       }
       renderer.render(scene, camera);
     });
+  }
+
+  // Mede o ritmo das análises (cada quadro processado pelo MindAR) e ajusta o
+  // limite de cartazes simultâneos e a economia sem cartaz na tela.
+  #watchPerformance() {
+    const controller = this.mindar.controller;
+    const original = controller.onUpdate;
+    const perf = this.perf;
+    perf.last = performance.now();
+    perf.idleSince = perf.last;
+    controller.onUpdate = (data) => {
+      if (data.type === 'processDone') {
+        const now = performance.now();
+        perf.loops += 1;
+        perf.loopMs += now - perf.last;
+        perf.last = now;
+      }
+      original?.(data);
+    };
+
+    const LOW = 10;  // análises/s abaixo disso: aparelho no limite
+    const HIGH = 20; // acima disso: há folga para mais um cartaz
+    let windowStart = performance.now();
+    perf.timer = setInterval(() => {
+      const now = performance.now();
+      const seconds = (now - windowStart) / 1000;
+      windowStart = now;
+      const tracking = (controller.trackingStates ?? []).filter((s) => s.isTracking).length;
+      const rate = perf.loops / seconds;
+      Object.assign(this.stats, {
+        renderFps: Math.round(perf.frames / seconds),
+        analysesPerSec: Math.round(rate * 10) / 10,
+        msPerAnalysis: perf.loops ? Math.round(perf.loopMs / perf.loops) : 0,
+        tracking,
+      });
+      perf.frames = 0;
+      perf.loops = 0;
+      perf.loopMs = 0;
+      if (this.paused) return;
+
+      // Economia: sem nenhum cartaz por 8 s, uma pausa curta entre análises.
+      if (tracking > 0) perf.idleSince = now;
+      const saving = now - perf.idleSince > 8000;
+      controller.idleDelay = saving ? 80 : 0;
+      this.stats.saving = saving;
+
+      // Limite adaptativo (só avalia com cartaz na tela; parado, o ritmo cai
+      // de propósito por causa da economia).
+      if (tracking === 0 || saving) { perf.slow = 0; perf.fast = 0; return; }
+      perf.slow = rate < LOW ? perf.slow + 1 : 0;
+      perf.fast = rate > HIGH && tracking >= this.limit ? perf.fast + 1 : 0;
+      if (perf.slow >= 2 && this.limit > 1) {
+        // Baixa o limite para um a menos do que está sendo rastreado e solta os
+        // cartazes encontrados por último, que passarem do novo limite.
+        this.limit = Math.max(1, Math.min(this.limit, tracking) - 1);
+        perf.slow = 0;
+        this.entries
+          .filter((e) => e.visible)
+          .sort((a, b) => a.foundAt - b.foundAt)
+          .slice(this.limit)
+          .forEach((e) => this.#forceLost(e));
+      }
+      if (perf.fast >= 4 && this.limit < this.ceiling) { this.limit += 1; perf.fast = 0; }
+      controller.maxTrack = this.limit;
+      this.stats.limit = this.limit;
+    }, 1000);
   }
 
   // A posição estimada do alvo faz sentido? Projeta os 4 cantos na tela e
@@ -188,11 +271,13 @@ export class ImageTracker extends Emitter {
   resume() {
     if (!this.running || !this.paused) return;
     this.paused = false;
+    this.perf.last = performance.now();
     this.mindar.controller.processVideo(this.mindar.video);
   }
 
   stop() {
     if (!this.mindar) return;
+    clearInterval(this.perf.timer);
     try {
       this.mindar.renderer.setAnimationLoop(null);
       if (this.running) this.mindar.stop();
@@ -208,4 +293,14 @@ export class ImageTracker extends Emitter {
     this.running = false;
     this.paused = false;
   }
+}
+
+// Limite inicial de cartazes rastreados ao mesmo tempo, pelo aparelho. O
+// Safari não informa memória: fica no valor intermediário.
+function deviceLimit() {
+  const cores = navigator.hardwareConcurrency || 4;
+  const memory = navigator.deviceMemory || 4;
+  if (cores >= 8 && memory >= 6) return 6;
+  if (cores <= 4 && memory <= 3) return 3;
+  return 4;
 }

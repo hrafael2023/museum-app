@@ -685,6 +685,106 @@
       "audio": {
         "src": null
       }
+    },
+    {
+      "id": "estrelas-escolhidas",
+      "kind": "Exposição",
+      "title": "Estrelas escolhidas",
+      "subtitle": "Luiz Zerbini",
+      "dates": "De 26 de junho a 16 de agosto de 2026",
+      "info": "Entrada gratuita · Classificação livre",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/luiz-zerbini-estrelas-escolhidas/",
+      "summary": "A mostra reúne cerca de 230 obras produzidas ao longo dos últimos dez anos, entre monotipias, pinturas, livros de artista e instalações, marcadas pela investigação da monotipia realizada a partir do contato direto com plantas, folhas, galhos, cascas e outras materialidades. O conjunto inclui trabalhos desenvolvidos a partir do acervo botânico do Instituto Inhotim e do Sítio Burle Marx, além de obras que ampliam o diálogo da produção gráfica de Luiz Zerbini com diferentes contextos, como as pesquisas relacionadas à gravura japonesa Ukiyo-e.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Curadoria de Ana Roman e Luiza Mello.",
+            "O Ministério da Cultura, o Nubank e o Instituto Tomie Ohtake apresentam Estrelas Escolhidas, exposição individual de Luiz Zerbini.",
+            "Além das obras gráficas, a exposição apresenta núcleos dedicados às publicações produzidas pelo artista, além de um projeto sobre etnobotânica ainda em desenvolvimento. Mesas e instalações concebidas para a exposição aproximam processos, matrizes, referências e obras finalizadas, revelando o caráter experimental e processual da pesquisa de Luiz Zerbini."
+          ]
+        },
+        {
+          "heading": "Sobre Luiz Zerbini",
+          "paragraphs": [
+            "Luiz Zerbini nasceu em São Paulo, em 1959. Iniciou sua atividade artística no final dos anos 1970. Expoente da chamada Geração 80, é conhecido por fazer pinturas em grande escala, de colorido exuberante, em geral figurativas e com incursões no abstracionismo geométrico. As composições do artista incluem a paisagem e as formas da natureza. Sua obra transita entre a pintura, a escultura, a instalação, a fotografia, a monotipia, e a produção de textos e vídeos. Zerbini integra, ainda, o grupo Chelpa Ferro.",
+            "O artista é representado pelas galerias Fortes D’Aloia & Gabriel (Brasil) e Sikkema Jenkins & Co (Nova York). Seus trabalhos estão em instituições como o Museu de Arte de São Paulo Assis Chateaubriand (MASP), em São Paulo, Brasil; Instituto Inhotim, em Brumadinho, Brasil; Pinacoteca do Estado de São Paulo, em São Paulo, Brasil ; Christen Sveaas Museum/Kistefos-Museet, na Noruega; Fondazione Sandretto Re Rebaudengo, na Itália; e Fondation Cartier pour l’Art Contemporain, na França."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/estrelas-escolhidas/1.jpg",
+          "alt": "Vista da sala com pinturas e monotipias coloridas"
+        },
+        {
+          "src": "assets/content/estrelas-escolhidas/2.jpg",
+          "alt": "Parede de entrada com o título Estrelas escolhidas e o nome Luiz Zerbini"
+        },
+        {
+          "src": "assets/content/estrelas-escolhidas/3.jpg",
+          "alt": "Monotipias de folhas e flores em cores fortes"
+        },
+        {
+          "src": "assets/content/estrelas-escolhidas/4.jpg",
+          "alt": "Sala com monotipias de plantas penduradas e mesa ao centro"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/estrelas-escolhidas.jpg",
+        "aspect": 1.376
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "historias-mesticas",
+      "kind": "Exposição",
+      "title": "Histórias Mestiças",
+      "subtitle": "Curadoria de Adriano Pedrosa e Lilia Schwarcz",
+      "dates": "De 16 de agosto a 5 de outubro de 2014",
+      "info": "Instituto Tomie Ohtake",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/historias-mesticas/",
+      "summary": "Histórias Mestiças é resultado de mais de dois anos de pesquisa dos curadores Adriano Pedrosa e Lilia Schwarcz sobre as matrizes formadoras do povo brasileiro: a questão da mestiçagem e seu rebatimento na produção artística.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Segundo os curadores, o objetivo dessa exposição é provocar e trazer à tona um tema que, de alguma maneira, tem existência ainda discreta entre nós brasileiros. Quem mestiçou quem? Como se mistura inclusão com exclusão social? Como se combinam prazer e dominação? Quais são as diferentes histórias escondidas nesses processos de mestiçagem? Essas são perguntas que, segundo eles, ainda, nem sempre recebem ou alcançam respostas.",
+            "A mostra, dividida em seis núcleos – Mapas e Trilhas; Máscaras e Retratos; Emblemas Nacionais e cosmologias; Ritos e religiões; Trabalho; Tramas e Grafismos – fricciona telas, esculturas, instalações, mapas, artefatos indígenas e africanos, fotos, documentos, textos, vídeos e histórias. A curadoria propõe reunir e resignificar linguagens sem hierarquizar culturas, mestiçando ainda gerações de artistas e autores com cruzamentos temáticos e conceituais, sem preocupação cronológica. “O nosso intuito foi convidar artistas nacionais, africanos e ameríndios para ‘conversar’ nessa exposição, de maneira a priorizar um aporte mais amplo e que rompa com as margens precisas e expressas pelos nossos cânones Ocidentais”, afirmam os curadores."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/historias-mesticas/1.jpg",
+          "alt": "Grande obra colorida em tecido entre duas pinturas"
+        },
+        {
+          "src": "assets/content/historias-mesticas/2.jpg",
+          "alt": "Corredor com fotografias em preto e branco nas paredes"
+        },
+        {
+          "src": "assets/content/historias-mesticas/3.jpg",
+          "alt": "Pinturas e objetos em vitrines"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/historias-mesticas.jpg",
+        "aspect": 1.401
+      },
+      "overlays": [
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
     }
   ]
 }
