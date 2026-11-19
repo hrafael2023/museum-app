@@ -5,7 +5,7 @@ import { narrator } from '../../audio/narrator.js';
 import { settings } from '../../core/settings.js';
 
 // Audioguia: ouvir o conteúdo sem precisar ler a tela.
-// Dois caminhos: apontar a câmera (o áudio começa sozinho ao reconhecer)
+// Dois caminhos: apontar a câmera (toque no ícone de som sobre o cartaz)
 // ou escolher na lista.
 export function audioGuideView(root) {
   const enabled = settings.get('audio');
@@ -39,7 +39,7 @@ export function audioGuideView(root) {
       h('h1', { class: 't-title page__title ds-band' }, 'Audioguia'),
       enabled
         ? h('div', { class: 'guide__intro' },
-            h('p', { class: 't-body' }, 'Aponte a câmera para um cartaz e o áudio começa sozinho. Você também pode escolher na lista abaixo.'),
+            h('p', { class: 't-body' }, 'Aponte a câmera para um cartaz e toque no ícone de som que aparece sobre ele. Você também pode escolher na lista abaixo.'),
             h('button', { class: 'ds-btn ds-btn--primary ds-btn--block', type: 'button', onclick: () => { narrator.unlock(); go('camera?modo=audio'); }, html: `<span>Ouvir com a câmera</span>${icons.camera}` }),
           )
         : h('div', { class: 'ds-banner guide__off' },

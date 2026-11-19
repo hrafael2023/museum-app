@@ -1,6 +1,6 @@
 import { h, icons, iconButton, header, headerAction } from '../dom.js';
 import { go } from '../router.js';
-import { getExhibition, getItems } from '../../content/repository.js';
+import { getExhibition, getItems, getItem } from '../../content/repository.js';
 import { ImageTracker } from '../../ar/tracker.js';
 import { narrator } from '../../audio/narrator.js';
 import { settings } from '../../core/settings.js';
@@ -8,7 +8,7 @@ import { openSheet } from '../content.js';
 
 // Tela da câmera. Dois modos:
 //  - "ver":   um círculo aparece sobre o cartaz reconhecido; tocar abre o conteúdo.
-//  - "ouvir": o áudio do cartaz reconhecido começa sozinho (audioguia).
+//  - "ouvir": o círculo vira um ícone de som; tocar nele toca o áudio (audioguia).
 export function cameraView(root, { query }) {
   const audioOn = settings.get('audio');
   let mode = audioOn && query.get('modo') === 'audio' ? 'audio' : 'ver';
@@ -45,12 +45,10 @@ export function cameraView(root, { query }) {
     modeButtons.forEach((b) => b.setAttribute('aria-checked', String(b.dataset.value === mode)));
     if (mode === 'audio') {
       narrator.unlock();
-      // Se já há um cartaz na câmera, começa a tocar sem esperar ele sumir e voltar.
-      const last = [...visible.values()].pop();
-      if (last && narrator.item?.id !== last.id) narrator.play(last);
     } else {
       narrator.stop();
     }
+    paintHotspots();
     updateHint();
   }
 
@@ -58,7 +56,7 @@ export function cameraView(root, { query }) {
   function updateHint() {
     if (!tracker.running) return;
     if (visible.size) {
-      hint.textContent = mode === 'audio' ? '' : 'Toque no círculo para abrir';
+      hint.textContent = mode === 'audio' ? 'Toque no ícone para ouvir' : 'Toque no círculo para abrir';
     } else {
       hint.textContent = mode === 'audio'
         ? 'Aponte para um cartaz para ouvir'
@@ -67,19 +65,23 @@ export function cameraView(root, { query }) {
     hint.hidden = !hint.textContent;
   }
 
-  // Marca o círculo do cartaz cujo áudio está tocando: vira um ícone de som
-  // que acompanha o cartaz na câmera (no modo Ouvir é o único que aparece).
-  function markPlaying() {
+  // Desenha os círculos conforme o modo e o áudio: no modo Ouvir todos viram
+  // ícones de som parados; o do cartaz que está tocando fica animado.
+  function paintHotspots() {
     const { status, item } = narrator;
     for (const b of overlayLayer.querySelectorAll('.ds-hotspot')) {
       const on = !!item && status !== 'stopped' && b.dataset.item === item.id;
+      const title = getItem(b.dataset.item)?.title ?? '';
+      b.classList.toggle('ds-hotspot--audio', mode === 'audio');
       b.classList.toggle('is-audio', on);
       b.classList.toggle('is-paused', on && status !== 'playing');
+      b.setAttribute('aria-label', mode !== 'audio' ? `Abrir ${title}`
+        : on && status === 'playing' ? `Pausar ${title}` : `Ouvir ${title}`);
     }
   }
 
   function renderPlayer() {
-    markPlaying();
+    paintHotspots();
     const { status, item } = narrator;
     if (!item || status === 'stopped') {
       player.hidden = true;
@@ -123,19 +125,19 @@ export function cameraView(root, { query }) {
   tracker.on('found', ({ item }) => {
     visible.set(item.id, item);
     navigator.vibrate?.(30);
-    if (mode === 'audio' && narrator.item?.id !== item.id) narrator.play(item);
     updateHint();
   });
   tracker.on('lost', ({ item }) => {
     visible.delete(item.id);
     updateHint();
   });
-  tracker.on('select', ({ item }) => openItem(item));
+  // Tocar no círculo: no modo Ver abre o conteúdo; no Ouvir, toca ou pausa o áudio.
+  tracker.on('select', ({ item }) => (mode === 'audio' ? narrator.toggle(item) : openItem(item)));
 
   setMode(mode);
   renderPlayer();
 
-  tracker.start().then(() => { markPlaying(); updateHint(); }).catch((err) => {
+  tracker.start().then(() => { paintHotspots(); updateHint(); }).catch((err) => {
     console.error(err);
     hint.hidden = false;
     hint.classList.add('camera__hint--error');

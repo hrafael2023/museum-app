@@ -138,9 +138,9 @@
         <div class="ds-banner">Faixa de aviso rosa, como a do site.</div>
       </div>
       <div class="demo demo--dark">
-        <div style="display:flex; gap:var(--space-7)"><button class="ds-hotspot" type="button" aria-label="Exemplo de hotspot"><span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span></button><button class="ds-hotspot is-audio" type="button" aria-label="Exemplo de hotspot tocando áudio"><span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span><span class="ds-hotspot__eq" aria-hidden="true"><i></i><i></i><i></i></span></button></div>
+        <div style="display:flex; gap:var(--space-7)"><button class="ds-hotspot" type="button" aria-label="Exemplo de hotspot"><span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span></button><button class="ds-hotspot ds-hotspot--audio" type="button" aria-label="Exemplo de hotspot de áudio"><span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span><span class="ds-hotspot__eq" aria-hidden="true"><i></i><i></i><i></i></span></button><button class="ds-hotspot ds-hotspot--audio is-audio" type="button" aria-label="Exemplo de hotspot tocando áudio"><span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span><span class="ds-hotspot__eq" aria-hidden="true"><i></i><i></i><i></i></span></button></div>
       </div>
-      <p class="note">Hotspot: o círculo que aparece sobre a obra reconhecida na câmera. O desenho tem 22 px; a área de toque, 88 px (<code>--hotspot-dot</code>, <code>--hotspot-hit</code>). Com <code>.is-audio</code>, marca o cartaz cujo áudio está tocando: cresce e mostra barras de som; com <code>.is-paused</code>, as barras param.</p>
+      <p class="note">Hotspot: o círculo que aparece sobre a obra reconhecida na câmera. O desenho tem 22 px; a área de toque, 88 px (<code>--hotspot-dot</code>, <code>--hotspot-hit</code>). No modo Ouvir, <code>.ds-hotspot--audio</code> mostra um ícone de som parado; com <code>.is-audio</code> (tocando), as barras dançam e o anel pulsa; com <code>.is-paused</code>, volta a ficar parado.</p>
     </section>
   </div>
 </body>

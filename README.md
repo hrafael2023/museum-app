@@ -13,9 +13,9 @@ Primeiro teste: 6 cartazes do Instituto Tomie Ohtake.
 
 - **Explorar com a câmera**: aponte para um cartaz. Quando ele é reconhecido,
   aparece um círculo rosa pulsando no centro. Toque no círculo para abrir o conteúdo.
-- **Audioguia**: aponte a câmera e o áudio do cartaz começa sozinho, sem precisar
-  tocar na tela. Sobre o cartaz que está tocando fica um ícone de som
-  que acompanha a imagem. Também dá para escolher o conteúdo numa lista e só ouvir.
+- **Audioguia**: aponte a câmera e, sobre o cartaz reconhecido, aparece um ícone
+  de som. Toque nele para ouvir; enquanto toca, o ícone fica animado, e tocar de
+  novo pausa. Também dá para escolher o conteúdo numa lista e só ouvir.
 - **Ajustes**: liga e desliga o áudio e baixa o conteúdo para usar sem internet.
 
 Funciona no navegador do celular (Safari no iPhone, Chrome no Android), sem
