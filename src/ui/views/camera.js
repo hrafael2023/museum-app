@@ -67,7 +67,19 @@ export function cameraView(root, { query }) {
     hint.hidden = !hint.textContent;
   }
 
+  // Marca o círculo do cartaz cujo áudio está tocando: vira um ícone de som
+  // que acompanha o cartaz na câmera (no modo Ouvir é o único que aparece).
+  function markPlaying() {
+    const { status, item } = narrator;
+    for (const b of overlayLayer.querySelectorAll('.ds-hotspot')) {
+      const on = !!item && status !== 'stopped' && b.dataset.item === item.id;
+      b.classList.toggle('is-audio', on);
+      b.classList.toggle('is-paused', on && status !== 'playing');
+    }
+  }
+
   function renderPlayer() {
+    markPlaying();
     const { status, item } = narrator;
     if (!item || status === 'stopped') {
       player.hidden = true;
@@ -123,7 +135,7 @@ export function cameraView(root, { query }) {
   setMode(mode);
   renderPlayer();
 
-  tracker.start().then(updateHint).catch((err) => {
+  tracker.start().then(() => { markPlaying(); updateHint(); }).catch((err) => {
     console.error(err);
     hint.hidden = false;
     hint.classList.add('camera__hint--error');

@@ -48,7 +48,7 @@ svg .fill { fill: currentColor; stroke: none; }
 .camera__ar video { object-fit: cover; }
 .camera__overlays { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
 .camera__overlays .ds-hotspot { pointer-events: auto; will-change: transform; }
-.camera[data-mode="audio"] .ds-hotspot { display: none; }
+.camera[data-mode="audio"] .ds-hotspot:not(.is-audio) { display: none; }
 .camera > .ds-header { position: absolute; top: 0; left: 0; right: 0; z-index: 4; }
 
 .segmented { display: inline-flex; border: var(--rule) solid var(--color-accent); }

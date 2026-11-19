@@ -5,8 +5,10 @@ export function createHotspot(config, { THREE, anchor, item, camera, layer, sele
   const button = document.createElement('button');
   button.className = 'ds-hotspot hotspot';
   button.type = 'button';
+  button.dataset.item = item.id; // a tela da câmera marca o cartaz cujo áudio está tocando
   button.setAttribute('aria-label', `Abrir ${item.title}`);
-  button.innerHTML = '<span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span>';
+  button.innerHTML = '<span class="ds-hotspot__ring"></span><span class="ds-hotspot__dot"></span>'
+    + '<span class="ds-hotspot__eq" aria-hidden="true"><i></i><i></i><i></i></span>';
   button.hidden = true;
   button.addEventListener('click', (event) => {
     event.stopPropagation();
