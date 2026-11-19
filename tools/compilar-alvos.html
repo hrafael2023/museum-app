@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compilar alvos</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px 16px; background: #f4f1ea; color: #141311; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; margin: 16px 0; }
+    figure { margin: 0; font-size: 12px; }
+    img { width: 100%; border-radius: 6px; }
+    button { font: inherit; padding: 10px 18px; border-radius: 999px; border: 0; background: #141311; color: #fff; cursor: pointer; }
+    progress { width: 100%; }
+    #log { white-space: pre-wrap; font: 13px ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <h1>Compilar alvos de reconhecimento</h1>
+  <p>Lê as imagens de <code>target.image</code> de cada item em <code>data/exhibition.json</code>, na mesma ordem,
+     e gera <code>assets/targets/targets.mind</code>. Rode de novo sempre que mudar, incluir ou reordenar itens.</p>
+  <p>Com o servidor de desenvolvimento (<code>python3 tools/servidor.py</code>) o arquivo é salvo direto no projeto; sem ele, o navegador baixa o arquivo.</p>
+  <div class="grid" id="grid"></div>
+  <button id="go">Compilar</button>
+  <p><progress id="bar" max="100" value="0"></progress></p>
+  <div id="log"></div>
+  <script type="module">
+    import { Compiler } from '../vendor/mind-ar/mindar-image.prod.js';
+    const log = (m) => { document.getElementById('log').textContent += m + '\n'; };
+    const ex = await (await fetch('../data/exhibition.json')).json();
+    const grid = document.getElementById('grid');
+    const images = await Promise.all(ex.items.map(async (item, i) => {
+      const img = new Image();
+      img.src = '../' + item.target.image;
+      await img.decode();
+      const fig = document.createElement('figure');
+      fig.innerHTML = `<div>${i}. ${item.id} (${img.naturalWidth}×${img.naturalHeight})</div>`;
+      // Mostra uma cópia: a imagem que vai para o compilador não pode estar na
+      // página, senão img.width vira a largura exibida e não a real.
+      fig.prepend(img.cloneNode());
+      grid.append(fig);
+      return img;
+    }));
+    async function compile() {
+      document.getElementById('go').disabled = true;
+      const t0 = performance.now();
+      const compiler = new Compiler();
+      const result = await compiler.compileImageTargets(images, (p) => { document.getElementById('bar').value = p; });
+      result.forEach((r, i) => {
+        const pts = (r.matchingData ?? []).reduce((n, m) => n + (m.maximaPoints?.length ?? 0) + (m.minimaPoints?.length ?? 0), 0);
+        log(`${i}. ${ex.items[i].id}: ${pts} pontos de reconhecimento`);
+      });
+      const data = await compiler.exportData();
+      log(`Compilado em ${((performance.now() - t0) / 1000).toFixed(1)} s, ${Math.round(data.byteLength / 1024)} KB`);
+      try {
+        const res = await fetch('/__salvar-alvos', { method: 'POST', body: data });
+        if (!res.ok) throw new Error(res.status);
+        log('Salvo em ' + ex.ar.targets);
+        window.compileDone = 'saved';
+      } catch {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([data]));
+        a.download = 'targets.mind';
+        a.click();
+        log('Servidor de desenvolvimento não encontrado: arquivo baixado. Coloque-o em ' + ex.ar.targets);
+        window.compileDone = 'downloaded';
+      }
+    }
+    document.getElementById('go').addEventListener('click', compile);
+    window.compile = compile;
+  </script>
+</body>
+</html>

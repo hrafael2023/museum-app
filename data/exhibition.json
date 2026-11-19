@@ -1,0 +1,392 @@
+{
+  "id": "tomie-ohtake-teste",
+  "title": "Instituto Tomie Ohtake",
+  "subtitle": "Teste com 6 cartazes",
+  "language": "pt-BR",
+  "ar": {
+    "targets": "assets/targets/targets.mind",
+    "maxTrack": 2
+  },
+  "items": [
+    {
+      "id": "iole-de-freitas",
+      "kind": "Exposição",
+      "title": "Colapsada, em pé",
+      "subtitle": "Iole de Freitas",
+      "dates": "De 8 de julho a 17 de setembro de 2023",
+      "info": "Terça a domingo, 11h às 19h · Entrada gratuita",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/iole-de-freitas-colapsada-em-pe/",
+      "summary": "Em instalação monumental inédita, a artista retoma a dança para sublinhar o movimento, o espaço e a forma.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Ao entrar no grande hall do Instituto Tomie Ohtake, o visitante vai se deparar com uma surpreendente instalação de dimensão monumental concebida pela artista visual que completa cinco décadas de carreira. Iole de Freitas: Colapsada, em pé, com curadoria de Paulo Miyada, é uma mostra organizada em torno desta instalação, produzida com tubos metálicos e placas de policarbonato marcados pelo uso prévio como partes de instalações feitas pela artista nos últimos vinte e cinco anos. Essa nova peça apoia-se sobre o solo e se ergue como um abrigo aberto repleto de movimento.",
+            "“Ela dispensou a possibilidade de criar novas linhas e planos suspensos na idiossincrática arquitetura desse espaço de passagem e cruzamento desenhado por Ruy Ohtake, e desceu ao chão de seu ateliê as peças constituintes de dez de suas exposições. Tubos metálicos e placas de policarbonato marcados pelo uso (com arranhões, manchas, sujidades e desgastes) foram então girados, recombinados, aparafusados, soldados”, explica Paulo Miyada, curador chefe do Instituto Tomie Ohtake.",
+            "Para a concepção da obra, pela primeira vez em seis décadas, a dança retornou direta e explicitamente ao seu fazer artístico, como modo de apreensão do espaço e concepção da forma. Neste processo ela começou a experimentar fragmentos de dança, cenas curtas ou anotações corporais em meio à obra em construção. Conforme Miyada, mover-se, só ou na companhia de seu neto, Bento, transformou-se numa espécie de notação que antecipa e testa relações entre partes e formas. “Trata-se da dança como régua, sismógrafo, desenho, maquete, laboratório”, destaca.",
+            "A questão com o corpo contida neste imenso “acontecimento da obra construída” convida as pessoas a percorrer a instalação em livre movimento. “Essa peça é um abrigo aberto, uma cena à espera de atores voluntários, uma partitura espacializada de dança, um dispositivo de medição do corpo e do espaço; é uma máquina para a vivência de múltiplos estados de presença, para a experimentação de modos de aparecer e perceber-se”, completa Miyada.",
+            "Os fragmentos filmados dessa experiência com a dança integram duas videoinstalações inéditas como parte da exposição desenvolvida em diálogo entre artista e o curador, que resultará ainda em uma publicação a ser distribuída gratuitamente.",
+            "Enquanto no Instituto Moreira Salles, em Iole de Freitas, anos 1970 / Imagem como presença, exposição em cartaz com curadoria de Sônia Salzstein, a artista apresenta uma parte de sua história reelaborada por uma instalação contemporânea, no Instituto Tomie Ohtake, ela abre novos caminhos em sua obra ao reprocessar elementos constitutivos de sua trajetória: a dança e a própria matéria de suas instalações."
+          ]
+        },
+        {
+          "heading": "Sobre Iole de Freitas",
+          "paragraphs": [
+            "Nascida em Belo Horizonte (MG), em 1945, Iole de Freitas mudou-se aos seis anos para o Rio de Janeiro, onde iniciou sua formação em dança contemporânea. Estudou na Escola Superior de Desenho Industrial (ESDI) da Universidade do Estado do Rio de Janeiro (Uerj), cidade em que hoje vive e trabalha. A partir de 1970, viveu por oito anos em Milão, onde começou a desenvolver e expor seu trabalho em artes plásticas a partir de 1973.",
+            "A artista participou de importantes mostras internacionais, como a 9ª Bienal de Paris, a 16ª Bienal de São Paulo, a 5ª Bienal do Mercosul e a Documenta 12, em Kassel, Alemanha. Seus trabalhos integram importantes coleções, entre as quais MAC USP, MAM-SP, Museu de Arte Contemporânea de Niterói, Museu Nacional de Belas Artes, MAM Rio, Museu de Arte do Rio, Bronx Museum (EUA), Winnipeg Art Gallery (Canadá) e Daros Collection (Suíça)."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/iole-de-freitas/1.jpg",
+          "alt": "Instalação de tubos metálicos e placas de policarbonato no grande hall"
+        },
+        {
+          "src": "assets/content/iole-de-freitas/2.jpg",
+          "alt": "Videoinstalação em sala escura"
+        },
+        {
+          "src": "assets/content/iole-de-freitas/3.jpg",
+          "alt": "Detalhe da instalação Colapsada, em pé"
+        },
+        {
+          "src": "assets/content/iole-de-freitas/4.jpg",
+          "alt": "Corredor com projeções de vídeo"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/iole-de-freitas.jpg",
+        "aspect": 1.411
+      },
+      "overlays": [
+        {
+          "type": "outline"
+        },
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "roda-dos-bichos",
+      "kind": "Exposição",
+      "title": "Roda dos Bichos",
+      "subtitle": "Maria Lira Marques",
+      "dates": "De 2 de março a 2 de junho de 2024",
+      "info": "Terça a domingo, 11h às 19h · Entrada gratuita",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/roda-dos-bichos/",
+      "summary": "O Instituto Tomie Ohtake apresenta Roda dos Bichos, exposição dedicada à produção de Maria Lira Marques.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Tendo como curador Paulo Miyada e curadora assistente Sabrina Fontenele, a mostra reúne trabalhos de toda a carreira de Lira Marques, que nas últimas três décadas extrai o barro das encostas mineiras para produzir cerâmicas e pigmentos naturais para suas pinturas e esculturas.",
+            "Com uma produção profundamente marcada pelo imaginário do semiárido mineiro, a artista se destaca por desenvolver uma linguagem singular, pintando em pedras ou sobre o papel, seres que habitam seu universo.",
+            "A mostra no Instituto Tomie Ohtake, a primeira institucional de sua carreira, é dividida entre as três salas à esquerda do grande hall. Na primeira, redonda, estão as pinturas em seixos de rio e outros trabalhos em papel. A segunda traz diferentes grupos de obras e famílias de bichos, reunindo grande parte dos trabalhos apresentados na exposição, enquanto a terceira sala, além de apresentar obras do início da carreira de Maria Lira, é dedicada sobretudo a contextualizar o seu trabalho e sua ligação com o Vale do Jequitinhonha, através de documentos, objetos, cantos e fotografias. Um curta-metragem produzido especialmente para a exposição, exibindo seus cantos, trajetória e obra, completa a exposição."
+          ]
+        },
+        {
+          "heading": "Sobre Maria Lira Marques",
+          "paragraphs": [
+            "Natural de Araçuaí, no Vale do Jequitinhonha, Maria Lira tem 78 anos, é ceramista, pintora e pesquisadora autodidata. O interesse pelo barro surgiu ainda na infância, observando a mãe criar presépios em barro cru para presentear vizinhos. Foi com a cera de abelha que o pai usava em sua sapataria que moldou seus primeiros objetos. Mais tarde, aprendeu o ofício com a vizinha Joana, ceramista que lhe ensinou a coleta correta do barro e sua queima em forno à lenha.",
+            "Com o auxílio de livros emprestados por familiares e vizinhos, passa a produzir bustos, que rapidamente são substituídos por obras que retratam a complexa realidade de sua região, historicamente marcada pela pobreza. Na década de 70, conhece Frei Chico, missionário holandês que vira seu grande amigo e parceiro profissional. Juntos, passam a documentar a memória cultural do Jequitinhonha, gravando cantos e rezas tradicionais.",
+            "Acometida por uma tendinite, Maria Lira troca as esculturas pela pintura, usando o barro em diferentes tonalidades como pigmento para desenhar seus bichos. Segundo Paulo Miyada, “Os bichos do sertão de Lira vivem na paisagem imaginante que se forma na ressonância entre a artista e o território. Tomam assento na superfície arredondada de seixos de rio, delineiam-se entre manchas feitas de água, cola e pigmentos minerais. Reaparecem enquadrados em planos de tons de vermelho, ocre, branco e amarelo, sozinhos ou em grupo, muitas vezes junto a símbolos-runas que traduzem elementos mais-que-humanos. São bichos de terra, marcam-se na terra, e estão sempre grávidos de movimento”."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/roda-dos-bichos/1.jpg",
+          "alt": "Pintura com pigmento de barro: bicho branco sobre fundo ocre"
+        },
+        {
+          "src": "assets/content/roda-dos-bichos/2.jpg",
+          "alt": "Pintura de um bicho com galhada sobre fundo rosado"
+        },
+        {
+          "src": "assets/content/roda-dos-bichos/3.jpg",
+          "alt": "Pintura circular com bichos brancos sobre fundo vermelho"
+        },
+        {
+          "src": "assets/content/roda-dos-bichos/4.jpg",
+          "alt": "Vista da sala com obras em papel"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/roda-dos-bichos.jpg",
+        "aspect": 1.486
+      },
+      "overlays": [
+        {
+          "type": "outline"
+        },
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "mira-schendel",
+      "kind": "Exposição",
+      "title": "Mira Schendel – esperar que a letra se forme",
+      "subtitle": "Curadoria de Galciani Neves e Paulo Miyada",
+      "dates": "De 25 de outubro de 2024 a 2 de fevereiro de 2025",
+      "info": "Entrada gratuita · Classificação indicativa: livre",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/mira-schendel-esperar-que-a-letra-se-forme/",
+      "summary": "A mostra explora a presença dos signos gráficos, da letra e da palavra na produção artística de Mira Schendel (1919–1988).",
+      "sections": [
+        {
+          "paragraphs": [
+            "Reconhecida como uma das artistas mais significativas da arte brasileira do século XX, Mira nasceu em Zurique, na Suíça, com ascendência judaica, tcheca, alemã e italiana. Devido à perseguição antissemita, fugiu para o Brasil em 1949, onde viveu e produziu grande parte de sua obra, dialogando com a Poesia Concreta, o Neoconcretismo e as experimentações artísticas das décadas de 1960 e 1970.",
+            "A mostra é retrospectiva e convida o público a imergir na presença da palavra na produção artística de Mira e suas interligações. A curadoria pensou a montagem em sete núcleos sustentados de maneira fluida na cronologia da artista.",
+            "Inaugurada concomitantemente à exposição Carlito Carvalhosa – A metade do dobro, ela integra o programa semestral palavra palavra palavra, iniciado com o projeto Poesia em presença – Entre cenas, slam, spoken word e rap."
+          ]
+        },
+        {
+          "heading": "Esperar que a letra se forme",
+          "paragraphs": [
+            "Foi em um manuscrito da artista que os curadores Galciani Neves e Paulo Miyada encontraram o título da exposição. De lá extraíram também este excerto, presente no texto curatorial:",
+            "“A sequência das letras no papel imita o tempo, sem poder realmente representá-lo. São simulações do tempo vivido, e não capturam a vivência do irrecuperável, que caracteriza esse tempo. Os textos que desenhei no papel podem ser lidos e relidos, coisa que o tempo não pode. Fixam, sem imortalizar, a fluidez do tempo.”"
+          ]
+        },
+        {
+          "heading": "Núcleos da mostra",
+          "paragraphs": [
+            "1. Chegada ao Brasil e à palavra. É o núcleo que abre a exposição: o público confere o percurso de representações esquemáticas de objetos para composições abstratas e experimentos com elementos gráficos. Destaque para as obras dos anos 1960, quando Mira integra rótulos e textos em seus trabalhos.",
+            "2. Escritura-desenho estruturando espaços. Desenhos feitos com nanquim e carvão que trazem a relação entre palavra e espaço, combinando letras, signos gráficos e gestos caligráficos. Haroldo de Campos descreveu essa “arte-escritura” de Mira, na qual o signo gráfico se torna uma questão estética e uma forma de fabulação de espaços.",
+            "3. A palavra em espiral. Trabalhos com palavras em diferentes idiomas, sobretudo italiano e alemão, línguas que a artista herdou dos pais, que aparecem junto ao português.",
+            "4. Arte: encontro com o corpóreo. Destaque para os Toquinhos, tanto os feitos em papel de arroz como os em acrílico. Entre as séries homônimas, os decalques de letraset são o elemento comum.",
+            "5. Refluir de páginas fechadas e abertas. Os cadernos de Mira Schendel, feitos em sua grande maioria em 1971: exercícios de composição em papéis encadernados, perfurados, grampeados ou colados.",
+            "6. Monotipias e objetos gráficos. Esta vertente complementa a exposição com duas das mais conhecidas séries da artista.",
+            "7. Ondas paradas de probabilidade, um sussurro. A apresentação da instalação “Ondas Paradas de Probabilidade”, a obra de Mira Schendel com maior dimensão."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/mira-schendel/1.jpg",
+          "alt": "Entrada da exposição com o título esperar que a letra se forme"
+        },
+        {
+          "src": "assets/content/mira-schendel/2.jpg",
+          "alt": "Vista da sala expositiva"
+        },
+        {
+          "src": "assets/content/mira-schendel/3.jpg",
+          "alt": "Visitante diante de obras na parede"
+        },
+        {
+          "src": "assets/content/mira-schendel/4.jpg",
+          "alt": "Obra de Mira Schendel com traços gráficos sobre papel"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/mira-schendel.jpg",
+        "aspect": 1.494
+      },
+      "overlays": [
+        {
+          "type": "outline"
+        },
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "poesia-em-presenca",
+      "kind": "Programa público",
+      "title": "Poesia em presença",
+      "subtitle": "Entre cenas, slam, spoken word e rap",
+      "dates": "De 19 de julho a 8 de setembro de 2024",
+      "info": "Classificação indicativa: 14 anos · Atividades gratuitas",
+      "url": "https://www.institutotomieohtake.org.br/programas-publicos/festival-poesia-em-presenca-entre-cenas-slam-spoken-word-e-rap/",
+      "summary": "Slam, oficinas, mesas e mais.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Poesia em presença – Entre cenas, slam, spoken word e rap é um assentamento, um registro que lança mão da palavra como território. O festival ocupa os espaços do Instituto com uma série de atividades, enquanto a exposição Gira da Poesia — 15 anos de slam no Brasil, parte integrante do projeto, celebra o movimento ao apresentar um olhar sobre a trajetória do slam de poesia no país, desde sua chegada até a atualidade.",
+            "Com curadoria da atriz, MC, compositora e ativista Dani Nega, o festival oferece ao público uma oportunidade única de acompanhar diversas oficinas, debates e performances, além de alguns dos mais representativos slams do país, numa programação que abraça não só a cena do slam na cidade, mas a quem interessar vivenciar a potência da poesia falada.",
+            "O projeto inaugura o programa palavra palavra palavra no Instituto Tomie Ohtake, que contou ainda, no segundo semestre de 2024, com a mostra Mira Schendel – Esperar que a letra se forme e o lançamento da publicação Caderno-ensaio 2: Palavra."
+          ]
+        },
+        {
+          "heading": "Slams",
+          "paragraphs": [
+            "Slam Coalkan · domingo, 21 de julho",
+            "Menor Slam do Mundo · sábado, 27 de julho",
+            "Slam da Guilhermina convida poetas do Slam Interescolar · sábado, 3 de agosto",
+            "ZAP! Slam · sábado, 10 de agosto",
+            "Slam das Mulé · sábado, 24 de agosto",
+            "Slam do Corpo · sábado, 31 de agosto"
+          ]
+        },
+        {
+          "heading": "Oficinas",
+          "paragraphs": [
+            "Escrita com Marcelino Freire · 25 de julho",
+            "Zine com Daniel Minchoni · 1º de agosto",
+            "Oração, métrica e rima com Gaspar Z’África · 8 de agosto",
+            "Palavra Corpo com Aysha Nascimento · 15 de agosto",
+            "Poesia e Roda de Conversa – Slam Surdes · 7 de setembro"
+          ]
+        },
+        {
+          "heading": "Mesas",
+          "paragraphs": [
+            "Rap – Ritmo e poesia, com Brisa Flow, Preta Rara e Xis · 28 de agosto",
+            "Poesia Indígena, com Auritha Tabajara, Majur Harachell Traytowu e Zahy Tentehar · 1º de setembro",
+            "Sarau – Resistência Poética, com Chacal e Sérgio Vaz · 3 de setembro",
+            "Transpoesia, com Amara Moira, Apêagá e Pi Eta Poeta · 5 de setembro"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/poesia-em-presenca/1.jpg",
+          "alt": "Identidade visual do festival Poesia em presença"
+        },
+        {
+          "src": "assets/content/poesia-em-presenca/2.jpg",
+          "alt": "Poeta se apresentando no ZAP! Slam"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/poesia-em-presenca.jpg",
+        "aspect": 1.443
+      },
+      "overlays": [
+        {
+          "type": "outline"
+        },
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "museu-das-origens",
+      "kind": "Exposição",
+      "title": "Ensaios para o Museu das Origens",
+      "subtitle": "Exposição coletiva",
+      "dates": "De 9 de setembro de 2023 a 28 de janeiro de 2024",
+      "info": "Terça a domingo, 11h às 19h · Entrada gratuita",
+      "url": "https://www.institutotomieohtake.org.br/exposicoes/ensaios-sobre-o-museu-das-origens/",
+      "summary": "Itaú Cultural e Instituto Tomie Ohtake realizam a mostra Ensaios para o Museu das Origens.",
+      "sections": [
+        {
+          "paragraphs": [
+            "A exposição é inspirada em proposta de Mario Pedrosa para a reconstrução do MAM-Rio depois de atingido por um incêndio em 1978. Para o crítico, além do restauro, devia se repensar o seu papel reunindo, ali, os museus de Arte Moderna, do Índio e do Inconsciente, que já existiam, e os museus do Negro e das Artes Populares, a serem criados.",
+            "Somando os espaços expositivos do Itaú Cultural e do Instituto Tomie Ohtake, a mostra se estende por 1,5 mil metros e abriga mais de mil peças. Como uma rede que reúne iniciativas de todo o país, apresenta obras de artistas, coletivos e mais de 20 instituições culturais e museus dedicados à preservação e difusão da memória matricial brasileira.",
+            "Resultado de extensa pesquisa inédita, a exposição tem curadoria geral de Izabela Pucu e Paulo Miyada, curadoria adjunta de Ana Roman e participação dos curadores convidados Daiara Tukano e Thiago de Paula Souza.",
+            "Embora ocupe dois espaços expositivos de instituições diferentes, a exposição é uma só. Pode ser visitada em qualquer ordem. Deste modo se faz um percurso pela história do Brasil, tomando a arte e a cultura como alicerces e passando pela memória de múltiplas ancestralidades.",
+            "“É uma lembrança de que, apesar de atravessado por práticas de apagamento da história, este país tem memórias resguardadas em pessoas e lugares múltiplos, os quais se tornam mais fortes quando estão em comunidade. Dessa forma, o passado pode alimentar projetos coletivos de futuro”, destacam os curadores."
+          ]
+        },
+        {
+          "heading": "Instituições",
+          "paragraphs": [
+            "Museu do Índio · Museu de Imagens do Inconsciente · Museu de Arte Moderna · Museu da República · Museu Histórico Nacional · Museu do Negro · Museu de Arte Moderna da Bahia · Museu de Arte da Universidade Federal do Ceará · Parque Nacional da Serra da Capivara · MAC-SP · Museu Afro Brasil Emanoel Araujo · Fundação Bienal · Acervo da Laje · Bloco Carnavalesco Loucura Suburbana · Cais do Valongo · Museu das Remoções · Museu Arqueológico de Sambaqui de Joinville · Museu do Homem do Nordeste · Museu Paraense Emílio Goeldi · Museu Marajó · Rede de Museus Indígenas do Ceará · Museu dos Quilombos e Favelas Urbanos · Museu da Inconfidência · Mina Du Veloso · Casa do Povo · Comunidade Cultural Quilombaque · Discoteca Oneyda Alvarenga · Memorial da Resistência · Museu da Diversidade Sexual · Museu de Arte Osório Cesar"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/museu-das-origens/1.jpg",
+          "alt": "Pintura Cafezal, 1952"
+        },
+        {
+          "src": "assets/content/museu-das-origens/2.jpg",
+          "alt": "Recorte de jornal sobre o novo MAM e a proposta de Mario Pedrosa"
+        },
+        {
+          "src": "assets/content/museu-das-origens/3.jpg",
+          "alt": "Obra Brasil Imaginário, 1988"
+        },
+        {
+          "src": "assets/content/museu-das-origens/4.jpg",
+          "alt": "Panela vasiforme, 1971, acervo do Museu do Índio"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/museu-das-origens.jpg",
+        "aspect": 1.506
+      },
+      "overlays": [
+        {
+          "type": "outline"
+        },
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    },
+    {
+      "id": "chen-kong-fang",
+      "kind": "Programa público",
+      "title": "Chen Kong Fang: lançamento de publicação",
+      "subtitle": "Livro organizado por Paulo Miyada e Yudi Rafael",
+      "dates": "1º de novembro de 2025, sábado, 10h30",
+      "info": "Atividade gratuita",
+      "url": "https://www.institutotomieohtake.org.br/programas-publicos/chen-kong-fang-lancamento-de-publicacao/",
+      "summary": "O artista Chen Kong Fang (Tung Cheng, China, 1931 — São Paulo, 2012) chegou ao Brasil nos anos 1950 e desenvolveu sua prática pictórica no cenário artístico paulistano por cerca de cinco décadas.",
+      "sections": [
+        {
+          "paragraphs": [
+            "Fang construiu uma obra marcada por diálogos entre figuração e abstração, tradição e experimentação.",
+            "A primeira retrospectiva do artista em uma instituição brasileira aconteceu no Instituto Tomie Ohtake em 2024, em Chen Kong Fang – O refúgio, com a reunião de mais de cem obras, entre pinturas a óleo e sumi-ês produzidos entre o final dos anos 1940 e o início da última década.",
+            "Em 2025, o Instituto Tomie Ohtake, com apoio das galerias Almeida & Dale e Gomide&Co, lança o livro organizado pelos curadores da mostra, Paulo Miyada e Yudi Rafael.",
+            "A programação de lançamento conta com uma mesa de conversa entre os curadores e a pesquisadora Fernanda Pitta, mediada por Catalina Bergues. A atividade é gratuita e acontece no grande hall do Instituto Tomie Ohtake."
+          ]
+        },
+        {
+          "heading": "Participantes da conversa",
+          "paragraphs": [
+            "Fernanda Pitta. Professora doutora na Divisão de Pesquisa em Arte, Teoria e Crítica do Museu de Arte Contemporânea da Universidade de São Paulo. É pesquisadora principal no projeto Decay Without Mourning, Future Thinking Heritage Practices, dedicado a refletir sobre as relações entre museus e a arte indígena.",
+            "Paulo Miyada. Curador e pesquisador de arte contemporânea. Diretor artístico do Instituto Tomie Ohtake e curador adjunto do Centre Pompidou, em Paris. Foi assistente de curadoria da 29ª Bienal de São Paulo e curador adjunto da 34ª Bienal de São Paulo.",
+            "Yudi Rafael. Curador, vive em São Paulo. Mestre em culturas latino-americanas e ibéricas pela Columbia University, é curador assistente do MASP. Entre 2023 e 2025, foi coordenador curatorial do programa Perspectivas transoceânicas na galeria Almeida & Dale."
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/content/chen-kong-fang/1.jpg",
+          "alt": "Capa do livro Fang"
+        },
+        {
+          "src": "assets/content/chen-kong-fang/2.jpg",
+          "alt": "Livro aberto com reproduções de pinturas"
+        }
+      ],
+      "target": {
+        "image": "assets/targets/chen-kong-fang.jpg",
+        "aspect": 1.419
+      },
+      "overlays": [
+        {
+          "type": "outline"
+        },
+        {
+          "type": "hotspot"
+        }
+      ],
+      "audio": {
+        "src": null
+      }
+    }
+  ]
+}

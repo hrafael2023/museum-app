@@ -1,0 +1,77 @@
+// Service worker do Museum App.
+// - Guarda a "casca" do app (HTML, CSS, JS) para ele abrir sem internet.
+// - O pacote pesado (bibliotecas, alvos, imagens) entra no cache
+//   'museum-app-offline' quando o visitante toca em "Baixar conteúdo".
+// Mude CACHE_VERSION a cada publicação (igual ao arquivo VERSAO).
+const CACHE_VERSION = '0.2.0';
+const SHELL_CACHE = `museum-app-shell-${CACHE_VERSION}`;
+const OFFLINE_CACHE = 'museum-app-offline';
+
+const SHELL = [
+  './',
+  'index.html',
+  'manifest.webmanifest',
+  'styles/app.css',
+  'assets/icons/icon.svg',
+  'src/main.js',
+  'src/core/events.js',
+  'src/core/settings.js',
+  'src/core/version.js',
+  'src/content/repository.js',
+  'src/ar/tracker.js',
+  'src/ar/overlays/index.js',
+  'src/ar/overlays/hotspot.js',
+  'src/ar/overlays/outline.js',
+  'src/audio/narrator.js',
+  'src/offline/offline.js',
+  'src/dev/fake-camera.js',
+  'src/ui/router.js',
+  'src/ui/dom.js',
+  'src/ui/content.js',
+  'src/ui/views/home.js',
+  'src/ui/views/camera.js',
+  'src/ui/views/item.js',
+  'src/ui/views/audioguide.js',
+  'src/ui/views/settings.js',
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(caches.open(SHELL_CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys
+        .filter((k) => k.startsWith('museum-app-shell-') && k !== SHELL_CACHE)
+        .map((k) => caches.delete(k))))
+      .then(() => self.clients.claim()),
+  );
+});
+
+// Arquivos que não mudam de conteúdo: servir do cache primeiro.
+const CACHE_FIRST = /\/(vendor|assets)\//;
+
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  if (request.method !== 'GET' || new URL(request.url).origin !== location.origin) return;
+
+  if (CACHE_FIRST.test(new URL(request.url).pathname)) {
+    event.respondWith(caches.match(request, { ignoreSearch: true }).then((hit) => hit || fetch(request)));
+    return;
+  }
+
+  // HTML, JS, CSS e dados: rede primeiro (pega a versão nova), cache se offline.
+  event.respondWith(
+    fetch(request)
+      .then((res) => {
+        if (res.ok && SHELL.some((p) => request.url.endsWith(p.replace('./', '')))) {
+          const copy = res.clone();
+          caches.open(SHELL_CACHE).then((c) => c.put(request, copy));
+        }
+        return res;
+      })
+      .catch(() => caches.match(request, { ignoreSearch: true })
+        .then((hit) => hit || (request.mode === 'navigate' ? caches.match('index.html') : Response.error()))),
+  );
+});
