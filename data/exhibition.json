@@ -739,7 +739,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/estrelas-escolhidas.mp3"
       }
     },
     {
@@ -783,7 +783,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/historias-mesticas.mp3"
       }
     }
   ]
