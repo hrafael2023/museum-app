@@ -16,7 +16,8 @@ Uso:
   python3 tools/gerar-audio.py --itens roda-dos-bichos,mira-schendel
   python3 tools/gerar-audio.py --amostras DIR   uma frase em várias vozes, para comparar
 
-Voz e estilo: "narration": {"voice": ..., "style": ...} no exhibition.json.
+Voz, estilo e idioma: "narration": {"voice": ..., "style": ..., "language": "pt-BR"}
+no exhibition.json (o padrão é pt-BR).
 Cada trecho gerado é transcrito e comparado com o texto; se não bater, é
 gerado de novo. Precisa do ffmpeg (brew install ffmpeg) para gravar o mp3.
 """
@@ -41,6 +42,8 @@ MANIFEST = OUT / "manifest.json"
 
 MODEL = "gemini-3.8-flash-tts"            # o "-lite-tts" tem cota própria, se esta acabar
 CHECK_MODEL = "gemini-3.5-flash-lite"     # transcreve o áudio para conferir com o texto
+OPENING_MODEL = "gemini-3.5-transcribe"    # confere o começo; o "-lite" inventa frases em trechos curtos
+LANGUAGE = "pt-BR"    # idioma da fala; outro idioma: "narration": {"language": ...} no exhibition.json
 VOICE = "Sulafat"
 # Instrução de estilo antes do texto. Em inglês e pedindo leitura literal: em
 # testes, instruções em português às vezes eram lidas em voz alta, e pedir que
@@ -129,7 +132,12 @@ def synthesize(text, voice, style, model, key):
         "contents": [{"parts": [{"text": f"{style}\n\n{text}" if style else text}]}],
         "generationConfig": {
             "responseModalities": ["AUDIO"],
-            "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}},
+            # O idioma vai na configuração, e não na instrução: assim não há texto
+            # que a voz possa ler em voz alta ou traduzir.
+            "speechConfig": {
+                "languageCode": LANGUAGE,
+                "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}},
+            },
         },
     }, key)
     return base64.b64decode(part["inlineData"]["data"])
@@ -139,7 +147,7 @@ def words(text):
     return re.findall(r"\w+", text.lower())
 
 
-def check(pcm, text, key):
+def check(pcm, text, style, key):
     """Transcreve o áudio e mede quanto ele bate com o texto (0 a 1).
 
     Protege contra a voz pular trechos, ler a instrução ou inventar frases."""
@@ -149,17 +157,60 @@ def check(pcm, text, key):
         input=pcm, check=True, capture_output=True).stdout
     part = call(CHECK_MODEL, {"contents": [{"parts": [
         {"inlineData": {"mimeType": "audio/mpeg", "data": base64.b64encode(mp3).decode()}},
-        {"text": "Transcreva exatamente este áudio, palavra por palavra, sem comentários."},
+        {"text": "Transcribe this audio verbatim, word by word, from the very first word, in the "
+                 "language actually spoken. Do not translate, skip or summarize anything. "
+                 "No comments."},
     ]}]}, key)
     heard, said = words(part["text"]), words(text)
+    # A voz às vezes lê a instrução de estilo (em inglês) antes do texto, e a
+    # semelhança geral ainda passa de 90%; por isso isso é conferido à parte.
+    if style_leak(heard, words(style or "")):
+        print("    a voz leu a instrução em voz alta", flush=True)
+        return 0.0
+    if not opening_ok(mp3, text, key):
+        return 0.0
     return difflib.SequenceMatcher(None, said, heard, autojunk=False).ratio()
+
+
+def opening_ok(mp3, text, key):
+    """Confere se o áudio começa pelo texto, e não por outra fala.
+
+    A voz já leu a instrução de estilo antes do texto, e a transcrição do áudio
+    inteiro às vezes omite esse começo. Por isso o trecho até a primeira pausa
+    é transcrito sozinho e comparado, letra a letra, com o início do texto."""
+    log = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-f", "mp3", "-i", "-", "-t", "30",
+         "-af", "silencedetect=n=-35dB:d=0.35", "-f", "null", "-"],
+        input=mp3, capture_output=True).stderr.decode(errors="replace")
+    m = re.search(r"silence_start: ([\d.]+)", log)
+    end = float(m.group(1)) + 0.2 if m and float(m.group(1)) > 0.3 else 6.0
+    clip = subprocess.run(
+        ["ffmpeg", "-loglevel", "error", "-f", "mp3", "-i", "-", "-t", f"{end:.2f}", "-f", "mp3", "-"],
+        input=mp3, check=True, capture_output=True).stdout
+    part = call(OPENING_MODEL, {"contents": [{"parts": [
+        {"inlineData": {"mimeType": "audio/mpeg", "data": base64.b64encode(clip).decode()}},
+        {"text": "Transcribe this clip verbatim in the language actually spoken. "
+                 "Do not translate. No comments."},
+    ]}]}, key)
+    heard = "".join(words(part["text"]))
+    start = "".join(words(text))[: len(heard) + 10]
+    ok = bool(heard) and difflib.SequenceMatcher(None, heard, start, autojunk=False).ratio() >= 0.6
+    if not ok:
+        print(f"    o começo do áudio não é o texto ({end:.1f}s): {part['text'].strip()[:80]}", flush=True)
+    return ok
+
+
+def style_leak(heard, style_words, n=4):
+    """True se a transcrição tem n palavras seguidas da instrução de estilo."""
+    grams = {tuple(style_words[i:i + n]) for i in range(len(style_words) - n + 1)}
+    return any(tuple(heard[i:i + n]) in grams for i in range(len(heard) - n + 1))
 
 
 def narrate(text, voice, style, model, key):
     """Gera um trecho e confere; refaz até 3 vezes se o áudio não bater com o texto."""
     for attempt in range(3):
         pcm = synthesize(text, voice, style, model, key)
-        score = check(pcm, text, key)
+        score = check(pcm, text, style, key)
         if score >= MIN_MATCH:
             return pcm, score
         print(f"    o áudio não bate com o texto ({score:.0%}), gerando de novo…", flush=True)
@@ -176,7 +227,9 @@ def to_mp3(pcm, path):
 
 
 def fingerprint(text, voice, style, model):
-    return hashlib.sha256(f"{model}|{voice}|{style}|{text}".encode()).hexdigest()[:16]
+    # O idioma padrão fica fora da impressão para não refazer os áudios que já existem.
+    lang = "" if LANGUAGE == "pt-BR" else f"{LANGUAGE}|"
+    return hashlib.sha256(f"{lang}{model}|{voice}|{style}|{text}".encode()).hexdigest()[:16]
 
 
 def main():
@@ -193,6 +246,8 @@ def main():
     conf = ex.get("narration") or {}
     voice = args.voz or conf.get("voice") or VOICE
     style = conf.get("style") or STYLE
+    global LANGUAGE
+    LANGUAGE = conf.get("language") or LANGUAGE
 
     if args.amostras:
         item = ex["items"][0]
