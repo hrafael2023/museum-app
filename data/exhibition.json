@@ -260,7 +260,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/poesia-em-presenca.mp3"
       }
     },
     {
@@ -317,7 +317,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/museu-das-origens.mp3"
       }
     },
     {
@@ -367,7 +367,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/chen-kong-fang.mp3"
       }
     },
     {
@@ -436,7 +436,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/montanha-e-vale.mp3"
       }
     },
     {
@@ -488,7 +488,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/contrarregra.mp3"
       }
     },
     {
@@ -546,7 +546,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/olho-dagua.mp3"
       }
     },
     {
@@ -604,7 +604,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/aguas-subterraneas.mp3"
       }
     },
     {
@@ -683,7 +683,7 @@
         }
       ],
       "audio": {
-        "src": null
+        "src": "assets/audio/hiromi-nagakura.mp3"
       }
     },
     {
